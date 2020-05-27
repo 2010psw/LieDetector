@@ -22,7 +22,6 @@ def conn():
 ##############id검색################################
 def select_id():
     con = conn()
-
     try:
         with con.cursor() as cursor:
             sql = "select * from id"
@@ -68,6 +67,45 @@ def select_gsr(id):
 # list = select_gsr(id)
 # print(list)
 
+
+#########################hrt 검색#########################
+def select_hrt(id):
+    con = conn()
+
+    try:
+        with con.cursor() as cursor:
+            sql = "select hrt0, hrt1, hrt2, hrt3, hrt4, hrt5, hrt6, hrt7, hrt8, hrt9 from hrt where hid = %s"
+            cursor.execute(sql, (id))
+            result = cursor.fetchall()
+            list = []
+            for i in result[0]:
+                list.append(i)
+
+    except Exception as msg:
+        print(msg)
+    finally:
+        con.close()
+        return list
+################################################################
+#########################id 검색#########################
+def select_lb(id):
+    con = conn()
+
+    try:
+        with con.cursor() as cursor:
+            sql = "select lb from lb where lid = %s"
+            cursor.execute(sql, (id))
+            result = cursor.fetchall()
+            list = []
+            for i in result[0]:
+                list.append(i)
+
+    except Exception as msg:
+        print(msg)
+    finally:
+        con.close()
+        return list
+################################################################
 
 ###########id 입력##############
 def ins_id(str_id):

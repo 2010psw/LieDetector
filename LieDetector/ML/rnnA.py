@@ -1,7 +1,11 @@
-
 import numpy as np
 import tensorflow as tf
-import pandas as pd
+
+from tensorflow.keras.layers import Embedding, Dense, LSTM
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.models import load_model
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.preprocessing.text import Tokenizer
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -9,13 +13,56 @@ from DB import conn
 
 ##########################아이디 목록 가져오기#########################
 id_list = conn.select_id()
-print(id_list)
+
 gsr_list = []
 hrt_list = []
 lb_list = []
 ####################################################################
 
+x_train = []
+y_train = []
+x_test = []
+
 
 for i in id_list :
     gsr_list.append(conn.select_gsr(i))
-    print(gsr_list)
+    hrt_list.append(conn.select_hrt(i))
+    lb_list.append(conn.select_lb(i))
+
+for i in range(len(id_list)):
+    list = [gsr_list[i], hrt_list[i]]
+    x_train.append(list)
+    y_train.append(lb_list[i])
+
+print(x_train)
+print(x_train.shape)
+
+# [
+#     [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]],
+#     [[10, 11, 12, 13, 14, 15, 16, 17, 18, 19], [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]],
+#     [[20, 21, 22, 23, 24, 25, 26, 27, 28, 29], [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]],
+#     [[30, 31, 32, 33, 34, 35, 36, 37, 38, 39], [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]],
+#     [
+#         [40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
+#         [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+#     ]
+# ]
+# tok = Tokenizer()
+
+try:
+    model = Sequential()
+    model.add(Embedding(50, input_length=10))
+    model.add(LSTM(128))
+    model.add(Dense(1, activation='sigmoid'))
+
+
+
+    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=4)
+    mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
+
+
+    model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
+    # history = model.fit(x_train, y_train, epochs=15, callbacks=[es, mc], batch_size=60, validation_split=0.2)
+    history = model.fit(x_train, y_train, epochs=15, callbacks=[es, mc], batch_size=60)
+except Exception as msg:
+    print(msg)
