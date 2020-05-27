@@ -90,21 +90,20 @@ def select_hrt(id):
 #########################id 검색#########################
 def select_lb(id):
     con = conn()
-
+    a = -1
     try:
         with con.cursor() as cursor:
             sql = "select lb from lb where lid = %s"
             cursor.execute(sql, (id))
             result = cursor.fetchall()
-            list = []
             for i in result[0]:
-                list.append(i)
+                a = i
 
     except Exception as msg:
         print(msg)
     finally:
         con.close()
-        return list
+        return a
 ################################################################
 
 ###########id 입력##############
