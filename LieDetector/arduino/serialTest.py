@@ -6,6 +6,8 @@ ser = serial.Serial(
     baudrate=9600,
 )
 
+findGsr = list()
+findHrt = list()
 
 while True:
     if ser.readable():
@@ -13,13 +15,10 @@ while True:
         gsrdata = res.decode()[:len(res) - 1]
         print(gsrdata)
 
-        findGsr = []
-        findHrt = []
-        for s in gsrdata:
-         if "gsr" in s:
-            findGsr.append(s)
+
+        if 'gsr' in gsrdata:
+            findGsr.append(gsrdata)
             print(findGsr)
-         if "hrt" in s:
-            findHrt.append(s)
+        if 'hrt=' in gsrdata:
+            findHrt.append(gsrdata)
             print(findHrt)
-        1256613
