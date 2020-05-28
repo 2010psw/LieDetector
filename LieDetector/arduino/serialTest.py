@@ -24,3 +24,4 @@ while True:
             print(findHrt)
             1
             2
+            수정
