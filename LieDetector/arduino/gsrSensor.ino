@@ -1,40 +1,60 @@
+
+#include "HeartSpeed.h"
+
+HeartSpeed heartspeed(A1);
+
 const int BUZZER=3;
 const int GSR=A2;
 int threshold=0;
-int sensorValue;
+int gsr;
+
+
+ void mycb(uint8_t rawData, int value)
+{
+  if(rawData){
+    Serial.println(value);
+  }else{
+    Serial.print("hrt = "); Serial.println(value);
+  }
+}
+
 
 void setup(){
   long sum=0;
   Serial.begin(9600);
   pinMode(BUZZER,OUTPUT);
   digitalWrite(BUZZER,LOW);
-  delay(1000);
+  delay(2000);
+
+  heartspeed.setCB(mycb);    ///Callback function.
+  heartspeed.begin();///The pulse test.
+  
   
   for(int i=0;i<500;i++)
   {
-  sensorValue=analogRead(GSR);
-  sum += sensorValue;
+  gsr=analogRead(GSR);
+  sum += gsr;
   delay(5);
   }
   threshold = sum/500;
-   Serial.print("threshold =");
+   Serial.print("");
    Serial.println(threshold);
   }
 
 void loop(){
   int temp;
-  sensorValue=analogRead(GSR);
-  Serial.print("sensorValue=");
-  Serial.println(sensorValue);
-  temp = threshold - sensorValue;
+  gsr=analogRead(GSR);
+  Serial.print("gsr = ");
+  Serial.println(gsr);
+  temp = threshold - gsr;
   if(abs(temp)>50)
   {
-    sensorValue=analogRead(GSR);
-    temp = threshold - sensorValue;
+    gsr=analogRead(GSR);
+    temp = threshold - gsr;
     if(abs(temp)>50){
     digitalWrite(BUZZER,HIGH);
-    Serial.println("YES!");
-    delay(3000);
+    //Serial.println("YES!");
+    delay(2000);
     digitalWrite(BUZZER,LOW);
     delay(1000);}
   }
