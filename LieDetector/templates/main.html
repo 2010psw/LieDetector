@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
 	</head>
 	<body class="is-preload">
 
@@ -23,9 +23,9 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="/index">시작화면🚩</a></li>
+					<li><a href="/">시작화면🚩</a></li>
 					
-					<li><a href="about.html">대하여..💬</a></li>
+					<li><a href="/about">대하여..💬</a></li>
 				</ul>
 			</nav>
 
@@ -44,177 +44,20 @@
 							
 <div class="col-8 col-12-medium">
 								<!-- Text -->
-<h1 style="color: red;'"font-size:large;>※ 센서를 착용 후 시작 해주세요!</h2>
-
-									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 당신은 지금 어떠한 상태인가요?</h2>
-									
-									<p></p>
-<p>사실만을 입력해주세요!</p>
-
-
-								<!-- Lists -->
-									<h3></h3>
-<h3>간단검사 (10문항)</h3>
-
-									
-										
-									
-											
-											<ol>
-
-
-												<li>평소에 남 눈치를 잘 보는가?</li>
-<!-- Break -->
-											<div class="col-4 col-12-small">
-												<input type="radio" id="1" name="a" >
-												<label for="1">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="2" name="a">
-												<label for="2">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="3" name="a">
-												<label for="3">아니다.</label>
-											</div>
-												<li>평소에 화를 잘 내는가?</li>
-                                                                                                                                    <div class="col-4 col-12-small">
-												<input type="radio" id="4" name="b">
-												<label for="4">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="5" name="b">
-												<label for="5">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="6" name="b">
-												<label for="6">아니다.</label>
-											</div>
-												<li>감정조절이 자신의 의지만으로 가능한가?.</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="7" name="c" >
-												<label for="7">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="8" name="c">
-												<label for="8">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="9" name="c">
-												<label for="9">아니다.</label>
-											</div>
-
-												<li>손에 평소 땀이 많은가?</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="10" name="d" >
-												<label for="10">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="11" name="d">
-												<label for="11">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="12" name="d">
-												<label for="12">아니다.</label>
-											</div>
-
-												<li>사랑에 금방 빠지는 가?.</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="13" name="e" >
-												<label for="13">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="14" name="e">
-												<label for="14">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="15" name="e">
-												<label for="15">아니다.</label>
-											</div>
-
-												<li>당신은 남자인가?</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="16" name="f" >
-												<label for="16">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="17" name="f">
-												<label for="17">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="18" name="f">
-												<label for="18">아니다.</label>
-											</div>
-
-												<li>당신은 여자인가?</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="19" name="g" >
-												<label for="19">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="20" name="g">
-												<label for="20">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="21" name="g">
-												<label for="21">아니다.</label>
-											</div>
-
-												<li>아빠가 좋은가? 엄마가 좋은가?</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="22" name="h" >
-												<label for="22">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="23" name="h">
-												<label for="23">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="24" name="h">
-												<label for="24">아니다.</label>
-											</div>
-
-												<li>가끔 죽고싶다는 생각을 하는가?</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="25" name="i" >
-												<label for="25">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="26" name="i">
-												<label for="26">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="27" name="i">
-												<label for="27">아니다.</label>
-											</div>
-
-												<li>당신은 인간인가?</li>
-<div class="col-4 col-12-small">
-												<input type="radio" id="28" name="j" >
-												<label for="28">그렇다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="29" name="j">
-												<label for="29">애매하다.</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="30" name="j">
-												<label for="30">아니다.</label>
-											</div>
-
-											</ol>
-										</div>
+<h1 style="color: red;'"font-size:large;>※ 주의사항 쓰는 곳!</h2>
+</div>
 									</div>
-<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 간단한 심호흡을 10초간 해주세요!</h2>
-<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 이제 제가 질문을 드릴겁니다. 묻는 질문에 답변해주세요!</h2>
+									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 항목1</h2>
+
+<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 항목2</h2>
+
+<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 항목3</h2>
 									<h2 class="w3-panel w3-leftbar w3-border-red">ⅳ. 그래프 값</h2>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script src="plotly.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    
-   
+						<script src="{{ url_for('static',filename='assets/js/plotly.min.js') }}"></script>
+
     <div class="wrapper">
         <div id="chart"></div>
         <script>
@@ -324,17 +167,18 @@
 						</section>
 					</div>
 					<div class="copyright">
-						&copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a href="https://coverr.co">Coverr</a>.
+						&copy; Create by 규건재상.</a>
 					</div>
 				</div>
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+
+    <script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
+	<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
 
 	</body>
 </html>
