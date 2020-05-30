@@ -64,11 +64,17 @@ try:
 
 
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=4)
-    mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
+    save_weights_only = 'true'
+    # mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
+
+    mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_weights_only = 'true', period=3)
 
 
     model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
     # history = model.fit(x_train, y_train, epochs=15, callbacks=[es, mc], batch_size=60, validation_split=0.2)
     history = model.fit(x_train, y_train, epochs=15, callbacks=[es, mc], batch_size=60)
+
+    loaded_model = load_model('best_model.h5')
+    
 except Exception as msg:
     print(msg)
