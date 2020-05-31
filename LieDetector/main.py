@@ -1,4 +1,9 @@
 from flask import Flask, render_template
+import random
+import json
+
+
+
 
 app = Flask(__name__)
 
@@ -20,6 +25,14 @@ def about_page():
 @app.route('/result')
 def result_page():
     return render_template('result.html')
+
+@app.route('/request_data', methods=['POST'])
+def send_data():
+    dic = {}
+    dic["gsr"] = random.randint(1, 10)
+    dic["hrt"] = random.randint(1, 10)
+    data = json.dumps(dic)
+    return data
 
 #############################
 
