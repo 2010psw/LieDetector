@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
 
 	</head>
 	<body class="is-preload">
@@ -28,6 +28,7 @@
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
+					<li><a href="/result">결과값 리스트 보기📄</a></li>
 					<li><a href="/about">대하여..💬</a></li>
 				</ul>
 			</nav>
@@ -39,7 +40,7 @@
 					<p>Smart Lie Detector에 오신 것을 환영합니다!<br />
 					당신의 거짓말 유무와 심리상태를 알려드립니다.</p>
 				</div>
-				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
+				<video autoplay loop muted playsinline src="/static/images/banner.mp4"></video>
 			</section>
 
 		<!-- Highlights -->
@@ -80,8 +81,7 @@
 									<h3>Python Tensorflow RNN 알고리즘</h3>
 								</header>
 								<p>실시간으로 다수의 개인 데이터를 추출해 종합하여 평균값을 내고 효과적인 질문으로 머신러닝
-을 통한 정확한 결과값 도출
-.</p>
+을 통한 정확한 결과값 도출.</p>
 							</div>
 						</section>
 						

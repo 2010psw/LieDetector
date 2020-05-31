@@ -44,47 +44,17 @@
 							
 <div class="col-8 col-12-medium">
 								<!-- Text -->
-<h1 style="color: red;'"font-size:large;>※ 주의사항 쓰는 곳!</h2>
+<h1 style="color: red;'"font-size:large;>※ 센서를 착용하기 전!</h2>
 </div>
 									</div>
-									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 항목1</h2>
+									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 센서 착용순서</h2>
 
-<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 항목2</h2>
 
-<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 항목3</h2>
-									<h2 class="w3-panel w3-leftbar w3-border-red">ⅳ. 그래프 값</h2>
+						<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. </h2>
 
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script src="plotly.min.js"></script>
-						<script src="{{ url_for('static',filename='assets/js/plotly.min.js') }}"></script>
 
-    <div class="wrapper">
-        <div id="chart"></div>
-        <script>
-            function getData() {
-                return Math.random();
-            }  
-            Plotly.plot('chart',[{
-                y:[getData()],
-                type:'line'
-            }]);
-            
-            var cnt = 0;
-            setInterval(function(){
-                Plotly.extendTraces('chart',{ y:[[getData()]]}, [0]);
-                cnt++;
-                if(cnt > 500) {
-                    Plotly.relayout('chart',{
-                        xaxis: {
-                            range: [cnt-500,cnt]
-                        }
-                    });
-                }
-            },15);
-        </script>
-    </div>
 
-			<h2 class="w3-panel w3-leftbar w3-border-red">ⅴ. 테이블 값</h2>					
+			<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. </h2>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -94,53 +64,14 @@
 
 
 
-  <table class="w3-table-all">
-    <tr>
 
-      <th>측정 일</th>
-      <th>거짓말 농도</th>
-      <th>심리</th>
-      <th>측정값</th>
-    </tr>
-    <tr>
-      <td>2020-04-02</td>
-      <td>60%</td>
-      <td>매우양호</td>
-<td>75.5</td>
-    </tr>
-    <tr>
-      <td>2020-04-04</td>
-      <td>80%</td>
-      <td>불안</td>
-<td>95.7</td>
-    </tr>
-    <tr>
-      <td>2020-04-15</td>
-      <td>70%</td>
-      <td>양호</td>
-<td>60.4</td>
-    </tr>
-<tr>
-      <td>2020-04-21</td>
-      <td>50%</td>
-      <td>양호</td>
-<td>80.8</td>
-    </tr>
-<tr>
-      <td>2020-04-22</td>
-      <td>30%</td>
-      <td>불안</td>
-<td>55.5</td>
-    </tr>
-   
-  </table>
 </div>
 
 </body>
 </html>
 
 
-	
+
 	</code></pre>
 
 							</div>
@@ -179,6 +110,7 @@
 	<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
 	<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
 	<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+
 
 	</body>
 </html>

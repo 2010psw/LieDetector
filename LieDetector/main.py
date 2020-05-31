@@ -17,6 +17,9 @@ def main_page():
 def about_page():
     return render_template('about.html')
 
+@app.route('/result')
+def result_page():
+    return render_template('result.html')
 
 #############################
 
