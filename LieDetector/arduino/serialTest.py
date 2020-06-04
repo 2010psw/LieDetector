@@ -31,15 +31,3 @@ while True:
         if 'hrt=' in gsrdata:
             findHrt.append(re.findall("\d+",gsrdata))
             print(findHrt)
-
-fig = plt.figure()
-ax1 = fig.add_subplot(1,1,1)
-
-def animate(i):
-    xs = []
-    ys = []
-    for line in lines:
-        if len(line) > 1:
-            x, y = line.split('m')
-            xs.append(findGsr)
-            ys.append()

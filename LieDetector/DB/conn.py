@@ -1,5 +1,7 @@
 import pymysql
 from DB import dbinfo
+import random
+
 
 host=dbinfo.host
 user=dbinfo.user
