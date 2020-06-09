@@ -30,13 +30,17 @@ def live_page():
 def result_page():
     return render_template('result.html')
 
-@app.route('/request_data', methods=['POST'])
+@app.route('/request_data', methods=['GET'])
 def send_data():
     dic = {}
-    dic["gsr"] = random.randint(1, 10)
-    dic["hrt"] = random.randint(1, 10)
+    dic["gsr"] = random.randint(1, 100)
+    dic["hrt"] = random.randint(1, 100)
     data = json.dumps(dic)
     return data
+
+@app.route('/sil')
+def sil_page():
+    return render_template('silhum.html')
 
 #############################
 
