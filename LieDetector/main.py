@@ -1,9 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import random
 import json
-
-
-
+import hashlib
+from datetime import datetime
+from DB import conn
 
 app = Flask(__name__)
 
@@ -41,6 +41,44 @@ def send_data():
 @app.route('/sil')
 def sil_page():
     return render_template('silhum.html')
+
+
+@app.route('/savedata', methods=['POST'])
+def save_data():
+    now = datetime.now()
+    nowtime = str("%s%s%s%s%s%s" % (now.year, now.month, now.day, now.hour, now.minute, now.microsecond))
+    encoded_data = nowtime.encode()
+    before = hashlib.sha256(encoded_data).hexdigest()
+    if len(before) > 65 :
+        id = before[0:65]
+    else :
+        id = before
+
+
+    print(before)
+    print(id)
+
+    b_data = request.json
+    conn.ins_id(id)
+    conn.ins_gsr(id, b_data['gsr'])
+    conn.ins_hrt(id, b_data['hrt'])
+    if b_data['label'] == 't':
+        conn.ins_lb(id, 1)
+    if b_data['label'] == 'f':
+        conn.ins_lb(id, 0)
+
+
+
+    #print(type(b_data['gsr']))
+
+
+
+
+
+
+    return 'good';
+
+
 
 #############################
 

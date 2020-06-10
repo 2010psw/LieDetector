@@ -263,8 +263,8 @@ $(function () {
 </html>
 
   <script>
-	var gArr = [];
-	var hArr = [];
+	var gArr = new Array();
+	var hArr = new Array();
 
 
 
@@ -324,11 +324,40 @@ $(function () {
       });
       t_btn.addEventListener('click', function() {
 		if(gArr.length===10 && hArr.length===10){
-			console.log('오짐');
+
 			biodata.gsr = gArr;
-			biodata.hrt = gArr;
+			biodata.hrt = hArr;
 			biodata.label = 't';
-			console.log(JSON.parse(biodata));
+
+			var jsonData = JSON.stringify(biodata);
+			console.log(jsonData);
+			$.ajax({
+					type : "POST",                               //1
+					url : "http://127.0.0.1:5000/savedata",                          //2
+					dataType : 'json',                           //3
+					contentType : 'application/json',            //4
+					data : jsonData,                 //5
+					success : successCall,                       //6
+					error   : errorCall                          //7
+
+			});
+			function successCall(){
+				console.log("전송성공");
+			}
+
+			function errorCall(){
+				console.log("전송실패");
+			}
+
+
+
+
+
+
+
+
+
+
 		}else{
 			alert("잠시 후 다시 시도해주세요");
 		}
@@ -336,7 +365,40 @@ $(function () {
       });
 
       f_btn.addEventListener('click', function() {
-            alert("폴스!");
+            if(gArr.length===10 && hArr.length===10){
+
+			biodata.gsr = gArr;
+			biodata.hrt = hArr;
+			biodata.label = 'f';
+
+
+			var jsonData = JSON.stringify(biodata);
+			console.log(jsonData);
+			$.ajax({
+					type : "POST",                               //1
+					url : "http://127.0.0.1:5000/savedata",                          //2
+					dataType : 'json',                           //3
+					contentType : 'application/json',            //4
+					data : jsonData,                 //5
+					success : successCall,                       //6
+					error   : errorCall                          //7
+
+			});
+			function successCall(){
+				console.log("전송성공");
+			}
+
+			function errorCall(){
+				console.log("전송실패");
+			}
+
+
+
+
+
+			}else{
+				alert("잠시 후 다시 시도해주세요");
+			}
       });
 
     }

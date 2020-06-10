@@ -190,39 +190,3 @@ def ins_lb(id, lb_data):
 
 
 
-# a = 'aaaa'
-# b = 'bbbb'
-# c = 'cccc'
-# d = 'dddd'
-# e = 'eeee'
-#
-# ta = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-# tb = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-# tc = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
-# td = [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
-# te = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
-#
-# ins_id(a)
-# ins_gsr(a, ta)
-# ins_hrt(a, ta)
-# ins_lb(a,1)
-#
-# ins_id(b)
-# ins_gsr(b, tb)
-# ins_hrt(b, tb)
-# ins_lb(b,1)
-#
-# ins_id(c)
-# ins_gsr(c, tc)
-# ins_hrt(c, tc)
-# ins_lb(c,0)
-#
-# ins_id(d)
-# ins_gsr(d, td)
-# ins_hrt(d, td)
-# ins_lb(d,1)
-#
-# ins_id(e)
-# ins_gsr(e, te)
-# ins_hrt(e, te)
-# ins_lb(e,0)
