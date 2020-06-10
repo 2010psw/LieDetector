@@ -256,10 +256,8 @@ $(function () {
 </html>
 
   <script>
-
-
-
-
+	var gArr = [];
+	var hArr = [];
 
 	setInterval(function(){
 		var btn = document.querySelector('button');
@@ -272,16 +270,29 @@ $(function () {
              console.log('gsr = ' + rqdata.gsr);
              console.log('hrt = ' + rqdata.hrt);
              setrq(rqdata,JSON.parse(xhr.responseText))
+             if(gArr.length === 10){
+			 	gArr.shift();
+			 }
+			 if(hArr.length===10){
+				hArr.shift()
+			 }
+			 gArr.push(rqdata.gsr);
+			 hArr.push(rqdata.hrt);
           }
         }
         xhr.open('GET', '/request_data', true);
         xhr.send(null);
 	}, 1000)
 
-     var rqdata = null;
-     function setrq(data1,data2){
+
+    var rqdata = null;
+    function setrq(data1,data2){
   		data1 = data2;
-  		}
+  	}
+
+
+
+
 
 
 
@@ -298,6 +309,9 @@ $(function () {
 
       });
     }
+
+
+
   </script>
 
 <body>
