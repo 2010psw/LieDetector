@@ -251,6 +251,13 @@ $(function () {
   </table>
 </div>
 <p></p>
+<div class="w3-container w3-center">
+
+	<button id="true_btn" class="w3-button w3-blue">True</button>
+	<button id="false_btn" class="w3-button w3-red">False</button>
+</div>
+<p></p>
+
 <div class="w3-center"><a href="/result" class="button icon fa-download">저장 및 결과값 보기</a></div>
 </body>
 </html>
@@ -258,6 +265,9 @@ $(function () {
   <script>
 	var gArr = [];
 	var hArr = [];
+
+
+
 
 	setInterval(function(){
 		var btn = document.querySelector('button');
@@ -278,6 +288,7 @@ $(function () {
 			 }
 			 gArr.push(rqdata.gsr);
 			 hArr.push(rqdata.hrt);
+
           }
         }
         xhr.open('GET', '/request_data', true);
@@ -296,8 +307,13 @@ $(function () {
 
 
 
+
     window.onload=function() {
-      var btn = document.querySelector('button');
+      var btn = document.getElementById("random.btn");
+	  var t_btn = document.getElementById("true_btn");
+	  var f_btn = document.getElementById("false_btn");
+
+	  var biodata = new Object();
 
       btn.addEventListener('click', function() {
 
@@ -305,20 +321,34 @@ $(function () {
              var a = rqdata;
             box.innerHTML = a.gsr;
 
-
+      });
+      t_btn.addEventListener('click', function() {
+		if(gArr.length===10 && hArr.length===10){
+			console.log('오짐');
+			biodata.gsr = gArr;
+			biodata.hrt = gArr;
+			biodata.label = 't';
+			console.log(JSON.parse(biodata));
+		}else{
+			alert("잠시 후 다시 시도해주세요");
+		}
 
       });
+
+      f_btn.addEventListener('click', function() {
+            alert("폴스!");
+      });
+
     }
 
 
 
   </script>
-
 <body>
   <div class="box">
 
   </div>
-  <button>램덤!</button>
+  <button id = "random.btn">램덤!</button>
 </body>
 </html>
 
