@@ -72,7 +72,7 @@ $(function () {
                         var series = this.series[0];
                         setInterval(function() {
                             var x = (new Date()).getTime(),
-                                y = rqdata.gsr;
+                                y = parseInt(rqdata.gsr);
                             series.addPoint([x, y], true, true);
                         }, 1000);
                     }
@@ -161,7 +161,7 @@ $(function () {
                         var series = this.series[0];
                         setInterval(function() {
                             var x = (new Date()).getTime(),
-                                y = rqdata.hrt;
+                                y = parseInt(rqdata.hrt);
                             series.addPoint([x, y], true, true);
                         }, 1000);
                     }
@@ -277,8 +277,8 @@ $(function () {
         xhr.onreadystatechange = function() {
           if(xhr.readyState === 4 && xhr.status === 200) {
              rqdata = JSON.parse(xhr.responseText);
-             console.log('gsr = ' + rqdata.gsr);
-             console.log('hrt = ' + rqdata.hrt);
+             console.log('gsr = ' + parseInt(rqdata.gsr));
+             console.log('hrt = ' + parseInt(rqdata.hrt));
              setrq(rqdata,JSON.parse(xhr.responseText))
              if(gArr.length === 10){
 			 	gArr.shift();
@@ -288,12 +288,15 @@ $(function () {
 			 }
 			 gArr.push(rqdata.gsr);
 			 hArr.push(rqdata.hrt);
-
+			 console.log('gsr');
+			 console.log(gArr);
+			 console.log('hrt');
+			 console.log(hArr);
           }
         }
         xhr.open('GET', '/request_data', true);
         xhr.send(null);
-	}, 1000)
+	}, 1200)
 
 
     var rqdata = null;

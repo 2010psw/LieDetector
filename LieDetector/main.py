@@ -4,6 +4,7 @@ import json
 import hashlib
 from datetime import datetime
 from DB import conn
+from arduino import serialTest as st
 
 app = Flask(__name__)
 
@@ -32,11 +33,15 @@ def result_page():
 
 @app.route('/request_data', methods=['GET'])
 def send_data():
-    dic = {}
-    dic["gsr"] = random.randint(1, 100)
-    dic["hrt"] = random.randint(1, 100)
-    data = json.dumps(dic)
-    return data
+    try:
+        dic = st.ser_data()
+        print(dic)
+        data = json.dumps(dic)
+        return data
+    except Exception as msg:
+        print(msg)
+
+
 
 @app.route('/sil')
 def sil_page():
