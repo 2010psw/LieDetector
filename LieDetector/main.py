@@ -56,14 +56,14 @@ def sil_page():
 @app.route('/savedata', methods=['POST'])
 def save_data():
     now = datetime.now()
-    nowtime = str("%s%s%s%s%s%s" % (now.year, now.month, now.day, now.hour, now.minute, now.microsecond))
+    nowtime = str("%s_%s_%s_%s_%s_%s_%s" % (now.year, now.month, now.day, now.hour, now.minute, now.second,now.microsecond))
     encoded_data = nowtime.encode()
     before = hashlib.sha256(encoded_data).hexdigest()
-    if len(before) > 65 :
-        id = before[0:65]
-    else :
-        id = before
-
+    # if len(before) > 65 :
+    #     id = before[0:65]
+    # else :
+    #     id = before
+    id = nowtime
 
     print(before)
     print(id)

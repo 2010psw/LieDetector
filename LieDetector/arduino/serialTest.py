@@ -3,10 +3,11 @@ import re
 import time
 
 
-def ser_data(dic):
+def ser_data():
     ser = serial.Serial(
         port='COM2',
-        baudrate=9600, )
+        baudrate=9600,
+    )
     try:
         dic = {}
         while True:
@@ -30,15 +31,15 @@ def ser_data(dic):
                         dic['hrt'] = hrt_1
 
 
-                if 'gsr' in dic.keys() and 'hrt' in dic.keys() and dic is not None:
-                    print(dic)
-                time.sleep(0.2)
+                # if 'gsr' in dic.keys() and 'hrt' in dic.keys() and dic is not None:
+                #     print(dic)
+                print(dic)
     except Exception as msg:
         print('err')
         print(msg)
         ser_data()
 
-
+ser_data()
 print('======================')
     # return dic
 
