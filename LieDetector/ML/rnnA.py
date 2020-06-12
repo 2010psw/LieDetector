@@ -5,7 +5,7 @@ from tensorflow.keras.layers import Embedding, Dense, LSTM
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.models import load_model
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from keras.preprocessing.text import Tokenizer
+# from keras.preprocessing.text import Tokenizer
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -58,7 +58,7 @@ for i in range(len(id_list)):
 
 try:
     model = Sequential()
-    model.add(Embedding(50,1, input_length=20))
+    model.add(Embedding(500,1, input_length=20))
     model.add(LSTM(128))
     model.add(Dense(1, activation='sigmoid'))
 
@@ -72,7 +72,7 @@ try:
 
     model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
     # history = model.fit(x_train, y_train, epochs=15, callbacks=[es, mc], batch_size=60, validation_split=0.2)
-    history = model.fit(x_train, y_train, epochs=15, callbacks=[es, mc], batch_size=60)
+    history = model.fit(x_train, y_train, epochs=15, callbacks=[mc], batch_size=60)
 
     loaded_model = load_model('best_model.h5')
     

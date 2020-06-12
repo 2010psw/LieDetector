@@ -4,11 +4,17 @@ import json
 import hashlib
 from datetime import datetime
 from DB import conn
-from arduino import serialTest as st
-
+''''#from arduino import serialTest as st'''
+from multiprocessing import Pool
+import time
+import threading
+import serial
 app = Flask(__name__)
 
 
+
+#############################################
+dic = {'gsr' : 0, 'hrt' : 0}
 ####5050/
 ############페이지############
 @app.route('/')
@@ -34,12 +40,11 @@ def result_page():
 @app.route('/request_data', methods=['GET'])
 def send_data():
     try:
-        dic = st.ser_data()
-        print(dic)
         data = json.dumps(dic)
         return data
     except Exception as msg:
         print(msg)
+
 
 
 
@@ -93,13 +98,41 @@ def save_data():
 
 
 
+def thread1():
+    ser = serial.Serial(
+        port='COM2',
+        baudrate=9600,
+    )
 
+    global dic
+    while True:
+        try:
+            while True:
+                global dic
+                if ser.readable():
+                    res = ser.readline()
+                    data = res.decode()
 
+                    if 'gsr' in data:
+                        gsr_1 = data.replace('gsr=', '')
+                        gsr_1 = gsr_1.replace('\r', '')
+                        gsr_1 = gsr_1.replace('\n', '')
+                        gsr_1 = int(gsr_1)
+                        dic['gsr'] = gsr_1
 
+                    if 'hrt' in data:
+                        hrt_1 = data.replace('hrt=', '')
+                        hrt_1 = hrt_1.replace('\r', '')
+                        hrt_1 = hrt_1.replace('\n', '')
+                        hrt_1 = int(hrt_1)
+                        if 100 > hrt_1 > 40:
+                            dic['hrt'] = hrt_1
 
-
+        except Exception as msg:
+            print('errrrrrrrrrrrrrrr')
+            print(msg)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    threading.Thread(target=thread1).start()
+    app.run()
 

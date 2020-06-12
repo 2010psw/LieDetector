@@ -277,8 +277,8 @@ $(function () {
         xhr.onreadystatechange = function() {
           if(xhr.readyState === 4 && xhr.status === 200) {
              rqdata = JSON.parse(xhr.responseText);
-             console.log('gsr = ' + parseInt(rqdata.gsr));
-             console.log('hrt = ' + parseInt(rqdata.hrt));
+             //console.log('gsr = ' + parseInt(rqdata.gsr));
+             //console.log('hrt = ' + parseInt(rqdata.hrt));
              setrq(rqdata,JSON.parse(xhr.responseText))
              if(gArr.length === 10){
 			 	gArr.shift();
