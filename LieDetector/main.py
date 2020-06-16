@@ -20,7 +20,6 @@ dic = {'gsr' : 0, 'hrt' : 0}
 @app.route('/')
 def index_page():
     return render_template('index.html')
-
 @app.route('/main')
 def main_page():
     return render_template('main.html')

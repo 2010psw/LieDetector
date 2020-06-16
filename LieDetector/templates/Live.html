@@ -258,7 +258,7 @@ $(function () {
 </div>
 <p></p>
 
-<div class="w3-center"><a href="/result" class="button icon fa-download">저장 및 결과값 보기</a></div>
+<div class="w3-center"><a href="/result" class="button icon fa-download">결과값 보기</a></div>
 </body>
 </html>
 
@@ -312,13 +312,12 @@ $(function () {
 
 
     window.onload=function() {
-      var btn = document.getElementById("random.btn");
 	  var t_btn = document.getElementById("true_btn");
 	  var f_btn = document.getElementById("false_btn");
 
 	  var biodata = new Object();
 
-      btn.addEventListener('click', function() {
+      t_btn.addEventListener('click', function() {
 
             var box = document.querySelector('.box');
              var a = rqdata;
@@ -409,12 +408,6 @@ $(function () {
 
 
   </script>
-<body>
-  <div class="box">
-
-  </div>
-  <button id = "random.btn">램덤!</button>
-</body>
 </html>
 
 
