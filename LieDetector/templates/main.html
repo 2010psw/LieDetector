@@ -8,6 +8,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/거짓말 탐지기.ico') }}">
 	</head>
 	<body class="is-preload">
 
@@ -43,26 +44,61 @@
 							
 <div class="col-8 col-12-medium">
 								<!-- Text -->
-	<h1 style="color: red;'"font-size:large;>※ 센서를 착용하기 전 주의사항!</h1></h2>
+	<h1 style="color: red;">※ 센서 부착 전 방해요소가 없는지 확인!</h1>
 </div>
 									</div>
 									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 센서 착용순서</h2>
-						<p>ⓐ 오른쪽 사진처럼 GSR 센서를 장착합니다! <img src="{{ url_for('static', filename='images/gsr.png') }}" class="w3-round-xxlarge" style="width:30%"></p>
-						<p>ⓑ 오른쪽 사진처럼 심박수 센서를 장착합니다! <img src="{{ url_for('static', filename='images/hrt.jfif') }}" class="w3-round-xxlarge" style="width:30%"></p>
-						<p>ⓒ 센서를 모두 장착하였습니다! <img src="{{ url_for('static', filename='images/체크박스.png') }}" class="w3-round-xxlarge" style="width:10%"></p>
+						<p class = "w3-center">ⓐ 아래 사진처럼 GSR 센서를 장착합니다! <p></p> <div class="w3-center"><img src="{{ url_for('static', filename='images/gsr.png') }}" class="w3-round-xxlarge" style="width:30%"></p></div>
+						<p class = "w3-center">ⓑ 아래 사진처럼 심박수 센서를 장착합니다! <p></p>  <div class="w3-center"><img src="{{ url_for('static', filename='images/hrt.jfif') }}" class="w3-round-xxlarge" style="width:30%"></p></div>
+						<p class = "w3-center">ⓒ 잘 부착이 되었는지 확인해 주세요! <div class="w3-center"><img src="{{ url_for('static', filename='images/체크박스.png') }}" class="w3-round-xxlarge" style="width:10%"></p></div>
 
 						<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 흥분하지 말고 차분을 유지하세요.</h2>
-						<div class="w3-center"><img src="{{ url_for('static', filename='images/차분한.jpg') }}" class="w3-round-xxlarge" style="width:50%"></div><p></p>
-						<div class="w3-center"><img src="{{ url_for('static', filename='images/편안한.jpg') }}" class="w3-round-xxlarge" style="width:50%"></div>
+						<p class = "w3-center">차분한 음악을 준비해봤습니다. 🎵</p>
+	<p class = "w3-center"><audio src="{{ url_for('static', filename='images/생명이 시작되는 곳.mp3') }}"controls></audio></p>
+	<p class = "w3-center"><audio src="{{ url_for('static', filename='images/Amorian Challenge.mp3') }}"controls></audio></p>
+						<p class = "w3-center">차분한 사진을 준비해봤습니다. 📷</p>
+	<body>
 
 
+<div class="w3-content w3-display-container w3-center">
+  <img src="{{ url_for('static', filename='images/차분한.jpg') }}" class="mySlides w3-round-xxlarge " style="width:100%">
+  <img src="{{ url_for('static', filename='images/편안한.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
+  <img src="{{ url_for('static', filename='images/차분1.jpg') }}" class="mySlides w3-round-xxlarge " style="width:100%">
+  <img src="{{ url_for('static', filename='images/차분3.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
+
+  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+</script>
+
+</body>
+	<p></p>
 			<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 검사할 준비가 되셨습니까?</h2>
 						<p></p>
 						<div class="w3-center"><a href="/live" class="button primary large">네! 검사하겠습니다!🎢</a></div>
 
 
 
-					</div>
+
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
