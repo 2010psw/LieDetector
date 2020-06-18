@@ -91,13 +91,12 @@ $(function () {
                     text: 'Skin electrical resistance'
                 },
                 plotLines: [{
+                	max : 550,
                     value: 0,
                     width: 1,
                     color: '#2e2f33'
-                }]
-            },
-            yAxis :{
-            	max : 550
+                }],
+
             },
             tooltip: {
                 formatter: function() {
@@ -183,13 +182,11 @@ $(function () {
                     text: 'Heart rate'
                 },
                 plotLines: [{
+                	max : 130,
                     value: 0,
                     width: 1,
                     color: '#e32222'
                 }]
-            },
-            yAxis :{
-            	max : 130
             },
             tooltip: {
                 formatter: function() {
