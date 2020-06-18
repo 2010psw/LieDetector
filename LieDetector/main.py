@@ -133,5 +133,5 @@ def thread1():
 
 if __name__ == '__main__':
     threading.Thread(target=thread1).start()
-    app.run(debug=True)
+    app.run()
 
