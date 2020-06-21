@@ -28,9 +28,14 @@ def main_page():
 def about_page():
     return render_template('about.html')
 
+@app.route('/sil')
+def sil_page():
+    return render_template('silhum.html')
+
 @app.route('/live')
 def live_page():
     return render_template('live.html')
+
 
 @app.route('/result')
 def result_page():
@@ -43,14 +48,6 @@ def send_data():
         return data
     except Exception as msg:
         print(msg)
-
-
-
-
-@app.route('/sil')
-def sil_page():
-    return render_template('silhum.html')
-
 
 @app.route('/savedata', methods=['POST'])
 def save_data():
