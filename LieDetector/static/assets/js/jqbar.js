@@ -6,7 +6,7 @@
                 animationSpeed: 2000,
                 barLength: 200,
                 orientation: 'h',
-                barWidth: 10,
+                barWidth: 15,
                 barColor: 'red',
                 label: '&nbsp;',
                 value: 100

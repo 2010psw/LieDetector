@@ -37,11 +37,11 @@ def pred(new_list):
 
 
 
-        print('test=============')
+
         asdf = tokenizer.texts_to_sequences(new_np)
-        print('test=============')
+
         print(asdf)
-        print('test=============')
+
         sequences = tokenizer.texts_to_sequences(new_list)
 
         x_test = pad_sequences(sequences, maxlen=21)
@@ -49,11 +49,18 @@ def pred(new_list):
         value_predicted = loaded_model.predict(x_test)
         print(len(value_predicted))
         sum = 0
+        result = value_predicted
+        data = []
         for i in value_predicted:
-            sum = sum+i
-        result = str((sum/21*100)[0])[0:5]
-        print('진실일 확률')
-        print(result)
-        return result
+            data.append(i.tolist())
+        print('====return data===')
+        print(data)
+        print(type(data))
+        print('====return data===')
+        # result = str((sum/21*100)[0])[0:5]
+
+        # print('진실일 확률')
+        # print(result)
+        return data
     except Exception as msg:
         print(msg)

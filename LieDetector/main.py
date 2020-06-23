@@ -4,7 +4,7 @@ import json
 import hashlib
 from datetime import datetime
 from DB import conn
-from ML import rnnA
+from ML import rnnA, pred
 ''''#from arduino import serialTest as st'''
 from multiprocessing import Pool
 import time
@@ -49,10 +49,7 @@ def result_page():
     for i in h_data :
         list_data_1.append(i)
     print(list_data_1)
-    # rnnA.train(list_data_1)
-    for i in range(1,100):
-        for j in range(1,100):
-            print('강제로딩')
+    rnnA.train(list_data_1)
     return render_template('run.html')
 
 @app.route('/sil')
@@ -61,7 +58,24 @@ def sil_page():
 
 @app.route('/result')
 def run_page():
-    return render_template('result.html')
+    result_data = pred.pred(list_data_1)
+    print('===main====')
+    print(result_data)
+    infodata = list_data_1
+    dic = {}
+    dic['info'] = infodata
+    dic['result'] = result_data
+    sum = 0
+    for i in range(21):
+        # print(type(dic['result'][i][0]))
+        sum = sum + dic['result'][i][0]
+    print('tetsetsetsetset')
+    print(sum/21*100)
+    dic['avg'] = (sum/21*100)
+    dic['true'] = str(sum/21*100)[0:5]
+    print(dic['avg'])
+
+    return render_template('result.html', data = dic)
 
 @app.route('/request_data', methods=['GET'])
 def send_data():

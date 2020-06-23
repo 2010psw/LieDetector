@@ -34,6 +34,7 @@
 		<!-- Heading -->
 			<div id="heading" >
 				<h1>결과값 리스트📄</h1>
+
 			</div>
 
 		<!-- Main -->
@@ -49,41 +50,23 @@
 
 </div>
 									</div>
-									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 찐 농도🤡</h2>
-						<div class="w3-center"></div>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 결과값🧾</h2>
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', '학지부 출근', '호구 당하기', '일진과 대화 수'],
-          ['초딩',  2,      10,1],
-          ['중딩',  5,      11,2],
-          ['고딩',  16,     5,2],
-          ['대딩',  0,      2,0]
-        ]);
 
-        var options = {
-          title: '찐따 히스토리',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
+<h1 class="w3-center">"당신이 진실을 말했을 확률은 {{ data['true'] }}% 입니다!"</h1>
+						{% if 0 <=data['avg'] < 25 %}
+<h2 class="w3-center">" 1 "</h2>
+{% elif 25 <= data['avg'] < 50 %}
+<h2 class="w3-center">" 2 "</h2>
+{% elif 50 <= data['avg'] < 75 %}
+<h2 class="w3-center">" 3 "</h2>
+{% elif 75 <= data['avg'] <= 100 %}
+<h2 class="w3-center">" 4 "</h2>
+{% else %}
+<h2 class="w3-center">" 다시 측정하세요! "</h2>
+{% endif %}
+<p></p>
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-  <body>
-     <div id="curve_chart" style="width: 1125px; height: 500px"></div>
-  </body>
-<h1 class="w3-center">" 찐냄새가 좀 심한데요..?🤬 "</h1>
-
-						<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 불안상태🥴</h2>
 
 
 <head>
@@ -91,7 +74,6 @@
 </head>
 	<div id="bar-1" ></div>
 	<div id="bar-2"></div>
-	<div id="bar-3"></div>
 <br/><br/><br/><br/>
 
 
@@ -102,20 +84,14 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-		$('#bar-1').jqbar({ label: '급격히 심박수값이 변함 : ', value: 87, barColor: '#D64747' });
-		$('#bar-2').jqbar({ label: '진실 정도(전기저항이 변한 정도) : ', value: 99, barColor: '#FF681F' });
-		$('#bar-3').jqbar({ label: '바로 답을 한 경우', value: 58.5, barColor: '#ea805c' });
+		$('#bar-1').jqbar({ label: '- 급격히 심박수값이 변함 : ', value: 87, barColor: '#D64747' });
+		$('#bar-2').jqbar({ label: '- 진실 정도(전기저항이 변한 정도) : ', value: {{ data['avg'] }}, barColor: '#FF681F' });
 	});
 </script>
-<h1 class="w3-center">" 많이 힘드신가요..? 😔 "</h1>
 
 
+			<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 상세 결과 보기📃</h2>
 
-
-
-
-
-			<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 히스토리🕕</h2>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -123,47 +99,44 @@
 
 <div class="w3-container">
 
-
+<h3>GSRrk</h3>
 
   <table class="w3-table-all">
     <tr>
+		<th>피부전기자극정보</th>
+      <th>측정 값</th>
+      <th>측정결과</th>
+    </tr>
+    {% for i in range(21)%}
+	  {% if i < 10 %}
+				<tr>
+					<th>GSR_{{ i+1 }}</th>
+					<th>{{ data['info'][i] }}</th>
+					<th>{{ data['result'][i] }}</th>
+				</tr>
+	  {% endif%}
+	{% endfor %}
 
-      <th>측정 일</th>
-      <th>거짓말 농도</th>
-      <th>심리</th>
-      <th>측정값</th>
-    </tr>
-    <tr>
-      <td>2020-04-02</td>
-      <td>60%</td>
-      <td>매우양호</td>
-<td>75.5</td>
-    </tr>
-    <tr>
-      <td>2020-04-04</td>
-      <td>80%</td>
-      <td>불안</td>
-<td>95.7</td>
-    </tr>
-    <tr>
-      <td>2020-04-15</td>
-      <td>70%</td>
-      <td>양호</td>
-<td>60.4</td>
-    </tr>
-<tr>
-      <td>2020-04-21</td>
-      <td>50%</td>
-      <td>양호</td>
-<td>80.8</td>
-    </tr>
-<tr>
-      <td>2020-04-22</td>
-      <td>30%</td>
-      <td>불안</td>
-<td>55.5</td>
-    </tr>
    
+  </table>
+<h3>GSRrk</h3>
+	<table class="w3-table-all">
+    <tr>
+		<th style="padding-right:63px;">심박정보</th>
+      <th>측정 값</th>
+      <th>측정결과</th>
+    </tr>
+    {% for i in range(21)%}
+	  {% if i > 10 %}
+				<tr>
+					<th>HRT_{{ i-10 }}</th>
+					<th>{{ data['info'][i] }}</th>
+					<th>{{ data['result'][i] }}</th>
+				</tr>
+	  {% endif %}
+	{% endfor %}
+
+
   </table>
 </div>
 
