@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import random
 import json
 import hashlib
@@ -15,6 +15,8 @@ app = Flask(__name__)
 
 #############################################
 dic = {'gsr' : 0, 'hrt' : 0}
+
+list_data_1 = []
 ####5050/
 ############페이지############
 @app.route('/')
@@ -32,8 +34,21 @@ def about_page():
 def live_page():
     return render_template('live.html')
 
-@app.route('/result')
+@app.route('/result', methods=['POST'])
 def result_page():
+    g_data = request.form['gsr'].split(',')
+    h_data = request.form['hrt'].split(',')
+    list_data_1.clear()
+
+    for i in g_data :
+        list_data_1.append(i)
+
+    list_data_1.append('#')
+
+    for i in h_data :
+        list_data_1.append(i)
+
+    print(list_data_1)
     return render_template('result.html')
 
 @app.route('/sil')
@@ -130,5 +145,5 @@ def thread1():
 
 if __name__ == '__main__':
     threading.Thread(target=thread1).start()
-    app.run()
+    app.run(debug=True)
 

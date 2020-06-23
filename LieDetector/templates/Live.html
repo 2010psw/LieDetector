@@ -248,11 +248,14 @@ $(function () {
 <p></p>
 <div class="w3-container w3-center">
 <a href="/sil" class="button icon fa-industry">데이터 입력</a>&nbsp;&nbsp;
-<a href="/result" class="button icon fa-download">결과값 보기</a>
+<button id="ls_btn" class="button icon fa-download">LSTM 적용</button>
 				</div>
 </body>
 </html>
+	<script>
 
+
+	</script>
   <script>
 	var gArr = new Array();
 	var hArr = new Array();
@@ -307,7 +310,74 @@ $(function () {
 	  var f_btn = document.getElementById("false_btn");
 
 	  var biodata = new Object();
+	  var ls_btn = document.getElementById('ls_btn');
 
+	  ls_btn.addEventListener('click', function() {
+		  if(gArr.length===10){
+				var form = document.createElement("form");
+			biodata.gsr = gArr;
+			biodata.hrt = hArr;
+			var ls_jsonData = JSON.stringify(biodata);
+			 form.setAttribute("charset", "UTF-8");
+
+			 form.setAttribute("method", "Post");  //Post 방식
+
+			 form.setAttribute("action", "/result"); //요청 보낼 주소
+
+
+
+			 var hiddenField = document.createElement("input");
+
+			 hiddenField.setAttribute("type", "hidden");
+
+			 hiddenField.setAttribute("name", "gsr");
+
+			 hiddenField.setAttribute("value", gArr);
+
+			 form.appendChild(hiddenField);
+
+
+
+			 hiddenField = document.createElement("input");
+
+			 hiddenField.setAttribute("type", "hidden");
+
+			 hiddenField.setAttribute("name", "hrt");
+
+			 hiddenField.setAttribute("value", hArr);
+
+			 form.appendChild(hiddenField);
+
+
+
+			 document.body.appendChild(form);
+
+			 form.submit();
+
+			}else {
+				alert('wait');
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      	});
       t_btn.addEventListener('click', function() {
 
             var box = document.querySelector('.box');
