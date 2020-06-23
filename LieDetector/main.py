@@ -4,6 +4,7 @@ import json
 import hashlib
 from datetime import datetime
 from DB import conn
+from ML import rnnA
 ''''#from arduino import serialTest as st'''
 from multiprocessing import Pool
 import time
@@ -47,8 +48,8 @@ def result_page():
 
     for i in h_data :
         list_data_1.append(i)
-
     print(list_data_1)
+    rnnA.train(list_data_1)
     return render_template('result.html')
 
 @app.route('/sil')
@@ -145,5 +146,5 @@ def thread1():
 
 if __name__ == '__main__':
     threading.Thread(target=thread1).start()
-    app.run(debug=True)
+    app.run()
 
