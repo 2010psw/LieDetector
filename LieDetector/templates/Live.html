@@ -79,7 +79,7 @@ $(function () {
                 }
             },
             title: {
-                text: '"현재 당신의 피부전기 저항값입니다."'
+                text: '현재 당신의 전기저항입니다.'
             },
 
             xAxis: {
@@ -90,7 +90,7 @@ $(function () {
                 title: {
                     text: 'Skin electrical resistance'
                 },
-                	max : 600, min : 0,
+                	max : 600,
             },
             tooltip: {
                 formatter: function() {
@@ -165,7 +165,7 @@ $(function () {
                 }
             },
             title: {
-                text: '"현재 당신의 심박수입니다."'
+                text: '당신의 심박수입니다..'
             },
             xAxis: {
                 type: 'datetime',
@@ -175,7 +175,7 @@ $(function () {
                 title: {
                     text: 'Heart rate'
                 },
-                max : 130, min : 0,
+                max : 130
             },
             tooltip: {
                 formatter: function() {
@@ -244,12 +244,14 @@ $(function () {
   </table>
 </div>
 <p></p>
-
-<p></p>
 <div class="w3-container w3-center">
-<a href="/sil" class="button icon fa-industry">데이터 입력</a>&nbsp;&nbsp;
-<a href="/result" class="button icon fa-download">결과값 보기</a>
-				</div>
+
+	<button id="true_btn" class="w3-button w3-blue">True</button>
+	<button id="false_btn" class="w3-button w3-red">False</button>
+</div>
+<p></p>
+
+<div class="w3-center"><a href="/result" class="button icon fa-download">결과값 보기</a></div>
 </body>
 </html>
 
