@@ -36,6 +36,10 @@ def live_page():
 def result_page():
     return render_template('result.html')
 
+@app.route('/sil')
+def sil_page():
+    return render_template('silhum.html')
+
 @app.route('/request_data', methods=['GET'])
 def send_data():
     try:
@@ -43,13 +47,6 @@ def send_data():
         return data
     except Exception as msg:
         print(msg)
-
-
-
-
-@app.route('/sil')
-def sil_page():
-    return render_template('silhum.html')
 
 
 @app.route('/savedata', methods=['POST'])
