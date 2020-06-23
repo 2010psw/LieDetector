@@ -64,7 +64,7 @@ def save_data():
     #     id = before
     id = nowtime
 
-    print(before)
+    # print(before)
     print(id)
 
     b_data = request.json
