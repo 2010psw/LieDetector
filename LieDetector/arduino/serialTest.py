@@ -1,76 +1,101 @@
-import serial
-import re
-import time
+#include <stdio.h>
+#include <stdlib.h>
 
+typedef struct NodeStruct
+{
+    int value;
+    struct NodeStruct* leftChild;
+    struct NodeStruct* rightChild;
+}Node;
 
-def ser_data():
-    ser = serial.Serial(
-        port='COM2',
-        baudrate=9600,
-    )
-    try:
-        dic = {}
-        while True:
-            if ser.readable():
-                res = ser.readline()
-                data = res.decode()
+Node* root = NULL;
 
-                if 'gsr' in data:
-                    gsr_1 = data.replace('gsr=', '')
-                    gsr_1 = gsr_1.replace('\r', '')
-                    gsr_1 = gsr_1.replace('\n', '')
-                    dic['gsr'] = gsr_1
+Node* BST_insert(Node* root, int value)
+{
+    if(root == NULL)
+    {
+        root = (Node*)malloc(sizeof(Node));
+        root->leftChild = root->rightChild = NULL;
+        root->value = value;
+        return root;
+    }
+    else
+    {
+        if(root->value > value)
+            root->leftChild = BST_insert(root->leftChild, value);
+        else
+            root->rightChild = BST_insert(root->rightChild, value);
+    }
+    return root;
+}
+Node* findMinNode(Node* root)
+{
+    Node* tmp = root;
+    while(tmp->leftChild != NULL)
+        tmp = tmp->leftChild;
+    return tmp;
+}
+Node* BST_delete(Node* root, int value)
+{
+    Node* tNode = NULL;
+    if(root == NULL)
+        return NULL;
 
+    if(root->value > value)
+        root->leftChild = BST_delete(root->leftChild, value);
+    else if(root->value < value)
+        root->rightChild = BST_delete(root->rightChild, value);
+    else
+    {
+        // 자식 노드가 둘 다 있을 경우
+        if(root->rightChild != NULL && root->leftChild != NULL)
+        {
+            tNode = findMinNode(root->rightChild);
+            root->value = tNode->value;
+            root->rightChild = BST_delete(root->rightChild, tNode->value);
+        }
+        else
+        {
+            tNode = (root->leftChild == NULL) ? root->rightChild : root->leftChild;
+            free(root);
+            return tNode;
+        }
+    }
 
+    return root;
+}
+Node* BST_search(Node* root, int value)
+{
+    if(root == NULL)
+        return NULL;
 
-                if 'hrt' in data:
-                    hrt_1 = data.replace('hrt=', '')
-                    hrt_1 = hrt_1.replace('\r', '')
-                    hrt_1 = hrt_1.replace('\n', '')
-                    if '141' not in data:
-                        dic['hrt'] = hrt_1
+    if(root->value == value)
+        return root;
+    else if(root->value > value)
+        return BST_search(root->leftChild, value);
+    else
+        return BST_search(root->rightChild, value);
+}
+void BST_print(Node* root)
+{
+    if(root == NULL)
+        return;
 
+    printf("%d ", root->value);
+    BST_print(root->leftChild);
+    BST_print(root->rightChild);
+}
 
-                # if 'gsr' in dic.keys() and 'hrt' in dic.keys() and dic is not None:
-                #     print(dic)
-                print(dic)
-    except Exception as msg:
-        print('err')
-        print(msg)
-        ser_data()
+int main()
+{
+    root = BST_insert(root, 5);
+    root = BST_insert(root, 3);
+    root = BST_insert(root, 7);
+    root = BST_insert(root, 1);
+    root = BST_insert(root, 9);
+    root = BST_insert(root, 6);
 
-ser_data()
-print('======================')
-    # return dic
+    root = BST_delete(root, 7);
 
-
-# def tttt():
-#     print('asdfasdf')
-#     dic = {}
-#     while True:
-#         if ser.readable():
-#             res = ser.readline()
-#             read_data = res.decode()[:len(res) - 2]
-#
-#             if 'gsr=' in read_data:
-#                 gsr_1 = read_data.replace('gsr=', '')
-#                 gsr_1 = gsr_1.replace('\r', '')
-#                 gsr_1 = gsr_1.replace('\n', '')
-#                 gsr_1 = int(gsr_1)
-#                 if gsr_1 < 600:
-#                     dic['gsr'] = gsr_1
-#
-#             if 'hrt=' in read_data:
-#                 hrt_1 = read_data.replace('hrt=', '')
-#                 hrt_1 = hrt_1.replace('\r', '')
-#                 hrt_1 = hrt_1.replace('\n', '')
-#                 hrt_1 = int(hrt_1)
-#                 dic['hrt'] = hrt_1
-#
-#             if 'gsr' in dic.keys() and 'hrt' in dic.keys():
-#                 return dic
-#             else:
-#                 time.sleep(10)
-
-
-# print(tttt())
+    BST_print(root);
+}
