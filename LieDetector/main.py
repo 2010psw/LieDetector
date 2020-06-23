@@ -35,7 +35,7 @@ def about_page():
 def live_page():
     return render_template('live.html')
 
-@app.route('/result', methods=['POST'])
+@app.route('/run', methods=['POST'])
 def result_page():
     g_data = request.form['gsr'].split(',')
     h_data = request.form['hrt'].split(',')
@@ -49,12 +49,19 @@ def result_page():
     for i in h_data :
         list_data_1.append(i)
     print(list_data_1)
-    rnnA.train(list_data_1)
-    return render_template('result.html')
+    # rnnA.train(list_data_1)
+    for i in range(1,100):
+        for j in range(1,100):
+            print('강제로딩')
+    return render_template('run.html')
 
 @app.route('/sil')
 def sil_page():
     return render_template('silhum.html')
+
+@app.route('/result')
+def run_page():
+    return render_template('result.html')
 
 @app.route('/request_data', methods=['GET'])
 def send_data():

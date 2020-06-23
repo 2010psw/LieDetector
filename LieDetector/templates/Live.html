@@ -254,7 +254,40 @@ $(function () {
 </html>
 	<script>
 
+	function LoadingWithMask() {
+    //화면의 높이와 너비를 구합니다.
+    var maskHeight = $(document).height();
+    var maskWidth  = window.document.body.clientWidth;
 
+    //화면에 출력할 마스크를 설정해줍니다.
+    var mask       ="<div id='mask' style='position:absolute; z-index:9000; background-color:#ffffff; display:none; left:0; top:0;'></div>";
+    var loadingImg ='';
+
+
+    loadingImg +="<div id='loadingImg' style = 'position:absolute;  z-index:9500; display:none; left:50%; top:50%; '>";
+    loadingImg +=" <img src='{{ url_for('static', filename='images/road.gif') }}' style='position: fixed; display: block; transform:translate(-50%, -50%); '/>";
+    loadingImg +="</div>";
+
+
+
+    //화면에 레이어 추가
+    $('body')
+    	.append(loadingImg)
+        .append(mask)
+
+
+    //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채웁니다.
+    $('#mask').css({
+            'width' : maskWidth
+            ,'height': maskHeight
+            ,'opacity' :'0.75'
+    });
+    //마스크 표시
+    $('#mask').show();
+
+    //로딩중 이미지 표시
+    $('#loadingImg').show();
+}
 	</script>
   <script>
 	var gArr = new Array();
@@ -313,7 +346,12 @@ $(function () {
 	  var ls_btn = document.getElementById('ls_btn');
 
 	  ls_btn.addEventListener('click', function() {
-		  if(gArr.length===10){
+		  if(gArr.length === 10){
+		  //로딩화면 시작
+ 			LoadingWithMask()
+
+		  //로딩화면 끝
+
 				var form = document.createElement("form");
 			biodata.gsr = gArr;
 			biodata.hrt = hArr;
@@ -322,7 +360,7 @@ $(function () {
 
 			 form.setAttribute("method", "Post");  //Post 방식
 
-			 form.setAttribute("action", "/result"); //요청 보낼 주소
+			 form.setAttribute("action", "/run"); //요청 보낼 주소
 
 
 
@@ -357,23 +395,6 @@ $(function () {
 			}else {
 				alert('wait');
 			}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
