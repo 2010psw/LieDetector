@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>Smart Lie Detector📈 : Main</title>
@@ -11,16 +10,13 @@
 		<link rel="shortcut icon" href="{{ url_for('static', filename='images/거짓말 탐지기.ico') }}">
 	</head>
 	<body class="is-preload">
-
 		<!-- Header -->
 			<header id="header">
-				
-<a class="logo" href="/">Smart Lie Detector📈</a>
+				<a class="logo" href="/">Smart Lie Detector📈</a>
 				<nav>
 					<a href="#menu">메뉴</a>
 				</nav>
 			</header>
-
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
@@ -28,95 +24,79 @@
 					<li><a href="/about">대하여..💬</a></li>
 				</ul>
 			</nav>
-
 		<!-- Heading -->
 			<div id="heading" >
 				<h1>센서부착🩺</h1>
 			</div>
-
 		<!-- Main -->
 			<section id="main" class="wrapper">
-<div class="inner">
+				<div class="inner">
 					<div class="content">
-
-					<!-- Elements -->
 						<div class="row">
-							
-<div class="col-8 col-12-medium">
-								<!-- Text -->
-	<h1 style="color: red;">※ 센서 부착 전 방해요소가 없는지 확인!</h1>
-</div>
-									</div>
-									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 센서 착용순서</h2>
-						<p class = "w3-center">ⓐ 아래 사진처럼 GSR 센서를 장착합니다! &nbsp;&nbsp;&nbsp;ⓑ 아래 사진처럼 심박수 센서를 장착합니다! &nbsp;&nbsp;&nbsp;ⓒ 잘 부착이 되었는지 확인해 주세요!<p></p> <div class="w3-center"><img src="{{ url_for('static', filename='images/gsr.png') }}" class="w3-round-xxlarge" style="width:30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ url_for('static', filename='images/hrt.jfif') }}" class="w3-round-xxlarge" style="width:30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ url_for('static', filename='images/체크박스.png') }}" class="w3-round-xxlarge" style="width:10%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</p>
-
-</div>
+							<div class="col-8 col-12-medium">
+								<h1 style="color: red;">※ 센서 부착 전 방해요소가 없는지 확인!</h1>
+							</div>
+						</div>
+						<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 센서 착용순서</h2>
+						<p class = "w3-center">ⓐ 아래 사진처럼 GSR 센서를 장착합니다! &nbsp;&nbsp;&nbsp;
+							ⓑ 아래 사진처럼 심박수 센서를 장착합니다! &nbsp;&nbsp;&nbsp;
+							ⓒ 잘 부착이 되었는지 확인해 주세요!<p></p>
+						<div class="w3-center">
+							<img src="{{ url_for('static', filename='images/gsr.png') }}" class="w3-round-xxlarge" style="width:30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="{{ url_for('static', filename='images/hrt.jfif') }}" class="w3-round-xxlarge" style="width:30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<img src="{{ url_for('static', filename='images/체크박스.png') }}" class="w3-round-xxlarge" style="width:10%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+							</p>
+						</div>
 						<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 흥분하지 말고 차분을 유지하세요.</h2>
 						<p class = "w3-center">차분한 음악을 준비해봤습니다. 🎵</p>
-	<p class = "w3-center"><audio src="{{ url_for('static', filename='images/Boat Quay Town.mp3') }}"controls></audio>&nbsp;&nbsp;<audio src="{{ url_for('static', filename='images/Amorian Challenge.mp3') }}"controls></audio></p>
-
+						<p class = "w3-center"><audio src="{{ url_for('static', filename='images/Boat Quay Town.mp3') }}"controls></audio>&nbsp;&nbsp;
+							<audio src="{{ url_for('static', filename='images/Amorian Challenge.mp3') }}"controls></audio>
+						</p>
 						<p class = "w3-center">차분한 사진을 준비해봤습니다. 📷</p>
-	<body>
 
+						<div class="w3-content w3-display-container w3-center">
+					  		<img src="{{ url_for('static', filename='images/차분한.jpg') }}" class="mySlides w3-round-xxlarge " style="width:100%">
+					  		<img src="{{ url_for('static', filename='images/편안한.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
+					  		<img src="{{ url_for('static', filename='images/차분1.jpg') }}" class="mySlides w3-round-xxlarge " style="width:100%">
+					  		<img src="{{ url_for('static', filename='images/차분3.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
+							<img src="{{ url_for('static', filename='images/차분4.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
+							<img src="{{ url_for('static', filename='images/차분5.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
+  							<button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+  							<button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+						</div>
+						<script>
+							var slideIndex = 1;
+							showDivs(slideIndex);
 
-<div class="w3-content w3-display-container w3-center">
-  <img src="{{ url_for('static', filename='images/차분한.jpg') }}" class="mySlides w3-round-xxlarge " style="width:100%">
-  <img src="{{ url_for('static', filename='images/편안한.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
-  <img src="{{ url_for('static', filename='images/차분1.jpg') }}" class="mySlides w3-round-xxlarge " style="width:100%">
-  <img src="{{ url_for('static', filename='images/차분3.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
-	<img src="{{ url_for('static', filename='images/차분4.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
-	<img src="{{ url_for('static', filename='images/차분5.jpg') }}" class="mySlides w3-round-xxlarge" style="width:100%">
+							function plusDivs(n) {
+							  showDivs(slideIndex += n);
+							}
 
-  <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-</div>
-
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-}
-</script>
-
-</body>
-	<p></p>
-			<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 검사할 준비가 되셨습니까?</h2>
+							function showDivs(n) {
+							  var i;
+							  var x = document.getElementsByClassName("mySlides");
+							  if (n > x.length) {slideIndex = 1}
+							  if (n < 1) {slideIndex = x.length}
+							  for (i = 0; i < x.length; i++) {
+								x[i].style.display = "none";
+							  }
+							  x[slideIndex-1].style.display = "block";
+							}
+						</script>
+						<p></p>
+						<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 검사할 준비가 되셨습니까?</h2>
 						<p></p>
 						<div class="w3-center"><a href="/live" class="button primary large">네! 검사하겠습니다!🎢</a></div>
 
+						<meta name="viewport" content="width=device-width, initial-scale=1">
+						<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
 
 
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-</html>
-
-
-
-	</code></pre>
-
-							</div>
-						</div>
 					</div>
 				</div>
 			</section>
-
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
@@ -125,11 +105,9 @@ function showDivs(n) {
 							<h3>스마트 거짓말 탐지기 (SMART LIE DETECTOR)</h3>
 							<p>선문대학교 컴퓨터공학부 4학년 졸업작품 "규건재상팀"</p>
 						</section>
-						
 						<section>
 							<h4>깃 허브</h4>
 							<ul class="plain">
-								
 								<li><a href="https://github.com/2010psw/LieDetector"><i class="icon fa-github">&nbsp;</i>Github</a></li>
 							</ul>
 						</section>
@@ -142,11 +120,11 @@ function showDivs(n) {
 
 		<!-- Scripts -->
 
-    <script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
 
 
 	</body>

@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>Smart Lie Detector📈 : Result</title>
@@ -12,183 +11,139 @@
 		<link rel="shortcut icon" href="{{ url_for('static', filename='images/거짓말 탐지기.ico') }}">
 	</head>
 	<body class="is-preload">
-
 		<!-- Header -->
-			<header id="header">
-				
-<a class="logo" href="/">Smart Lie Detector📈</a>
+		<header id="header">
+			<a class="logo" href="/">Smart Lie Detector📈</a>
 				<nav>
 					<a href="#menu">메뉴</a>
 				</nav>
-			</header>
-
+		</header>
 		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="/">시작화면🚩</a></li>
-					
-					<li><a href="/about">대하여..💬</a></li>
-				</ul>
-			</nav>
-
+		<nav id="menu">
+			<ul class="links">
+				<li><a href="/">시작화면🚩</a></li>
+				<li><a href="/about">대하여..💬</a></li>
+			</ul>
+		</nav>
 		<!-- Heading -->
-			<div id="heading" >
-				<h1>결과값 리스트📄</h1>
-
-			</div>
-
+		<div id="heading" >
+			<h1>결과값 리스트📄</h1>
+		</div>
 		<!-- Main -->
-			<section id="result" class="wrapper">
-				<div class="inner">
-					<div class="content">
-
+		<section id="result" class="wrapper">
+			<div class="inner">
+				<div class="content">
 					<!-- Elements -->
-						<div class="row">
-							
-<div class="col-8 col-12-medium">
-								<!-- Text -->
-
-</div>
-									</div>
-									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 결과값🧾</h2>
-
-
-<h1 class="w3-center">"당신이 진실을 말했을 확률은 {{ data['true'] }}% 입니다!"</h1>
+					<div class="row">
+						<div class="col-8 col-12-medium"></div>
+					</div>
+					<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 결과값🧾</h2>
+					<h1 class="w3-center">"당신이 진실을 말했을 확률은 {{ data['true'] }}% 입니다!"</h1>
 						{% if 0 <=data['avg'] < 25 %}
-<h2 class="w3-center">" 1 "</h2>
-{% elif 25 <= data['avg'] < 50 %}
-<h2 class="w3-center">" 2 "</h2>
-{% elif 50 <= data['avg'] < 75 %}
-<h2 class="w3-center">" 3 "</h2>
-{% elif 75 <= data['avg'] <= 100 %}
-<h2 class="w3-center">" 4 "</h2>
-{% else %}
-<h2 class="w3-center">" 다시 측정하세요! "</h2>
-{% endif %}
-<p></p>
+							<h2 class="w3-center">" 1 "</h2>
+						{% elif 25 <= data['avg'] < 50 %}
+							<h2 class="w3-center">" 2 "</h2>
+						{% elif 50 <= data['avg'] < 75 %}
+							<h2 class="w3-center">" 3 "</h2>
+						{% elif 75 <= data['avg'] <= 100 %}
+							<h2 class="w3-center">" 4 "</h2>
+						{% else %}
+							<h2 class="w3-center">" 다시 측정하세요! "</h2>
+						{% endif %}
+							<p></p>
+						<head>
+							<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/jqbar.css') }}">
+						</head>
+					<div id="bar-1" ></div>
+					<div id="bar-2"></div>
+					<br/><br/><br/><br/>
 
+					<script src="js/jquery.min.js" type="text/javascript"></script>
+					<script src="js/jqbar.js" type="text/javascript"></script>
+					<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+					<script src="{{ url_for('static',filename='assets/js/jqbar.js') }}"></script>
+					<script type="text/javascript">
+						$(document).ready(function () {
+							$('#bar-1').jqbar({ label: '- 급격히 심박수값이 변함 : ', value: 87, barColor: '#D64747' });
+							$('#bar-2').jqbar({ label: '- 진실 정도(전기저항이 변한 정도) : ', value: {{ data['avg'] }}, barColor: '#FF681F' });
+						});
+					</script>
+					<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 상세 결과 보기📃</h2>
 
+					<meta name="viewport" content="width=device-width, initial-scale=1">
+					<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<head>
-	<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/jqbar.css') }}">
-</head>
-	<div id="bar-1" ></div>
-	<div id="bar-2"></div>
-<br/><br/><br/><br/>
+					<div class="w3-container">
 
-
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/jqbar.js" type="text/javascript"></script>
-						<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
-						<script src="{{ url_for('static',filename='assets/js/jqbar.js') }}"></script>
-
-<script type="text/javascript">
-	$(document).ready(function () {
-		$('#bar-1').jqbar({ label: '- 급격히 심박수값이 변함 : ', value: 87, barColor: '#D64747' });
-		$('#bar-2').jqbar({ label: '- 진실 정도(전기저항이 변한 정도) : ', value: {{ data['avg'] }}, barColor: '#FF681F' });
-	});
-</script>
-
-
-			<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 상세 결과 보기📃</h2>
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
-
-<div class="w3-container">
-
-<h3>GSRrk</h3>
-
-  <table class="w3-table-all">
-    <tr>
-		<th>피부전기자극정보</th>
-      <th>측정 값</th>
-      <th>측정결과</th>
-    </tr>
-    {% for i in range(21)%}
-	  {% if i < 10 %}
-				<tr>
-					<th>GSR_{{ i+1 }}</th>
-					<th>{{ data['info'][i] }}</th>
-					<th>{{ data['result'][i] }}</th>
-				</tr>
-	  {% endif%}
-	{% endfor %}
-
-   
-  </table>
-<h3>GSRrk</h3>
-	<table class="w3-table-all">
-    <tr>
-		<th style="padding-right:63px;">심박정보</th>
-      <th>측정 값</th>
-      <th>측정결과</th>
-    </tr>
-    {% for i in range(21)%}
-	  {% if i > 10 %}
-				<tr>
-					<th>HRT_{{ i-10 }}</th>
-					<th>{{ data['info'][i] }}</th>
-					<th>{{ data['result'][i] }}</th>
-				</tr>
-	  {% endif %}
-	{% endfor %}
-
-
-  </table>
-</div>
-
-</body>
-</html>
-
-<p class="w3-text-indigo">※ 추가로 검사를 하고싶으면 메뉴에서 시작화면으로 가주세요.</p>
-
-
-	
-	</code></pre>
-
-							</div>
-						</div>
+						<h3>GSRrk</h3>
+						<table class="w3-table-all">
+						<tr>
+							<th>피부전기자극정보</th>
+						  <th>측정 값</th>
+						  <th>측정결과</th>
+						</tr>
+						{% for i in range(21)%}
+						  {% if i < 10 %}
+									<tr>
+										<th>GSR_{{ i+1 }}</th>
+										<th>{{ data['info'][i] }}</th>
+										<th>{{ data['result'][i] }}</th>
+									</tr>
+						  {% endif%}
+						{% endfor %}
+					  </table>
+						<h3>GSRrk</h3>
+						<table class="w3-table-all">
+							<tr>
+								<th style="padding-right:63px;">심박정보</th>
+							  <th>측정 값</th>
+							  <th>측정결과</th>
+							</tr>
+							{% for i in range(21)%}
+								{% if i > 10 %}
+									<tr>
+										<th>HRT_{{ i-10 }}</th>
+										<th>{{ data['info'][i] }}</th>
+										<th>{{ data['result'][i] }}</th>
+									</tr>
+							  	{% endif %}
+							{% endfor %}
+						</table>
 					</div>
+					<p class="w3-text-indigo">※ 추가로 검사를 하고싶으면 메뉴에서 시작화면으로 가주세요.</p>
 				</div>
-			</section>
-
+			</div>
+		</section>
 		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<div class="content">
-						<section>
-							<h3>스마트 거짓말 탐지기 (SMART LIE DETECTOR)</h3>
-							<p>선문대학교 컴퓨터공학부 4학년 졸업작품 "규건재상팀"</p>
-						</section>
-						
-						<section>
-							<h4>깃 허브</h4>
-							<ul class="plain">
-								
-								<li><a href="https://github.com/2010psw/LieDetector"><i class="icon fa-github">&nbsp;</i>Github</a></li>
-							</ul>
-						</section>
-					</div>
+		<footer id="footer">
+			<div class="inner">
+				<div class="content">
+					<section>
+						<h3>스마트 거짓말 탐지기 (SMART LIE DETECTOR)</h3>
+						<p>선문대학교 컴퓨터공학부 4학년 졸업작품 "규건재상팀"</p>
+					</section>
+					<section>
+						<h4>깃 허브</h4>
+						<ul class="plain">
+							<li><a href="https://github.com/2010psw/LieDetector"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+						</ul>
+					</section>
+				</div>
 					<div class="copyright">
 						&copy; Create by 규건재상.</a>
 					</div>
-				</div>
-			</footer>
+			</div>
+		</footer>
 
 		<!-- Scripts -->
 
-    <script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
-<script src="{{ url_for('static',filename='assets/js/exporting.js') }}"></script>
-<script src="{{ url_for('static',filename='assets/js/highcharts.js') }}"></script>
-<script src="{{ url_for('static',filename='assets/js/jqbar.js') }}"></script>
-
-
+		<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/exporting.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/highcharts.js') }}"></script>
+		<script src="{{ url_for('static',filename='assets/js/jqbar.js') }}"></script>
 	</body>
 </html>

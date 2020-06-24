@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-
 <html>
 	<head>
 		<title>Smart Lie Detector📈 : Live</title>
@@ -11,16 +10,13 @@
 		<link rel="shortcut icon" href="{{ url_for('static', filename='images/거짓말 탐지기.ico') }}">
 	</head>
 	<body class="is-preload">
-
 		<!-- Header -->
 			<header id="header">
-				
-<a class="logo" href="/">Smart Lie Detector📈</a>
+				<a class="logo" href="/">Smart Lie Detector📈</a>
 				<nav>
 					<a href="#menu">메뉴</a>
 				</nav>
 			</header>
-
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
@@ -28,480 +24,439 @@
 					<li><a href="/about">대하여..💬</a></li>
 				</ul>
 			</nav>
-
 		<!-- Heading -->
 			<div id="heading" >
 				<h1>거짓말 탐지하기📉</h1>
 			</div>
-
 		<!-- Main -->
 			<section id="result" class="wrapper">
 				<div class="inner">
 					<div class="content">
-
 					<!-- Elements -->
 						<div class="row">
-							
-<div class="col-8 col-12-medium">
-								<!-- Text -->
-
-</div>
-									</div>
-									<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 피부 전기저항 그래프🔌</h2>
-
-						<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
-<script type="text/javascript">
-$(function () {
-    $(document).ready(function() {
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-
-        var chart;
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'container',
-                type: 'spline',
-                marginRight: 10,
-                events: {
-                    load: function() {
-
-
-                        var series = this.series[0];
-                        setInterval(function() {
-                            var x = (new Date()).getTime(),
-                                y = parseInt(rqdata.gsr);
-                            series.addPoint([x, y], true, true);
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: '"현재 당신의 피부전기 저항값입니다."'
-            },
-
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: 'Skin electrical resistance'
-                },
-                	max : 600, min : 0,
-            },
-            tooltip: {
-                formatter: function() {
-                        return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: '피부전기저항 (GSR)',
-                data: (function() {
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i++) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 0
-                        });
-                    }
-
-                    return data;
-                })()
-
-            }]
-        });
-    });
-
-});
-</script>
-<body>
-
-
-<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-
-</body>
-						<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 심박수 그래프💓</h2>
-
-<script type="text/javascript">
-$(function () {
-    $(document).ready(function() {
-        Highcharts.setOptions({
-            global: {
-                useUTC: false
-            }
-        });
-
-        var chart;
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'container2',
-                type: 'spline',
-                marginRight: 10,
-                events: {
-                    load: function() {
-
-
-                        var series = this.series[0];
-                        setInterval(function() {
-                            var x = (new Date()).getTime(),
-                                y = parseInt(rqdata.hrt);
-                            series.addPoint([x, y], true, true);
-                        }, 1000);
-                    }
-                }
-            },
-            title: {
-                text: '"현재 당신의 심박수입니다."'
-            },
-            xAxis: {
-                type: 'datetime',
-                tickPixelInterval: 150
-            },
-            yAxis: {
-                title: {
-                    text: 'Heart rate'
-                },
-                max : 130, min : 0,
-            },
-            tooltip: {
-                formatter: function() {
-                        return '<b>'+ this.series.name +'</b><br/>'+
-                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
-                        Highcharts.numberFormat(this.y, 2);
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            exporting: {
-                enabled: false
-            },
-            series: [{
-                name: '심박수 (HRT)',
-                data: (function() {
-                    var data = [],
-                        time = (new Date()).getTime(),
-                        i;
-
-                    for (i = -19; i <= 0; i++) {
-                        data.push({
-                            x: time + i * 1000,
-                            y: 0
-                        });
-                    }
-                    return data;
-                })()
-            }]
-        });
-    });
-
-});
-</script>
-<body>
-<div id="container2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-</body>
-
-
-
-
-			<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 진단표📋</h2>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
-
-<div class="w3-container">
-
-
-
-  <table class="w3-table-all">
-    <tr>
-
-   <th>찐 농도</th>
-      <th>거짓말 농도</th>
-      <th>바로 답하는 순발력</th>
-      <th>아두이노 측정값</th>
-    </tr>
-    <tr>
-      <td>78%</td>
-      <td>87%</td>
-      <td>매우빠름</td>
-<td>75.5</td>
-  </table>
-</div>
-<p></p>
-
-<p></p>
-<div class="w3-container w3-center">
-<a href="/sil" class="button icon fa-industry">데이터 입력</a>&nbsp;&nbsp;
-<button id="ls_btn" class="button icon fa-download">LSTM 적용</button>
-				</div>
-</body>
-</html>
-	<script>
-
-	function LoadingWithMask() {
-    //화면의 높이와 너비를 구합니다.
-    var maskHeight = $(document).height();
-    var maskWidth  = window.document.body.clientWidth;
-
-    //화면에 출력할 마스크를 설정해줍니다.
-    var mask       ="<div id='mask' style='position:absolute; z-index:9000; background-color:#ffffff; display:none; left:0; top:0;'></div>";
-    var loadingImg ='';
-
-
-    loadingImg +="<div id='loadingImg' style = 'position:absolute;  z-index:9500; display:none; left:50%; top:50%; '>";
-    loadingImg +=" <img src='{{ url_for('static', filename='images/road.gif') }}' style='position: fixed; display: block; transform:translate(-50%, -50%); '/>";
-    loadingImg +="</div>";
-
-
-
-    //화면에 레이어 추가
-    $('body')
-    	.append(loadingImg)
-        .append(mask)
-
-
-    //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채웁니다.
-    $('#mask').css({
-            'width' : maskWidth
-            ,'height': maskHeight
-            ,'opacity' :'0.75'
-    });
-    //마스크 표시
-    $('#mask').show();
-
-    //로딩중 이미지 표시
-    $('#loadingImg').show();
-}
-	</script>
-  <script>
-	var gArr = new Array();
-	var hArr = new Array();
-
-
-
-
-	setInterval(function(){
-		var btn = document.querySelector('button');
-
-        var xhr = new XMLHttpRequest();
-
-        xhr.onreadystatechange = function() {
-          if(xhr.readyState === 4 && xhr.status === 200) {
-             rqdata = JSON.parse(xhr.responseText);
-             //console.log('gsr = ' + parseInt(rqdata.gsr));
-             //console.log('hrt = ' + parseInt(rqdata.hrt));
-             setrq(rqdata,JSON.parse(xhr.responseText))
-             if(gArr.length === 10){
-			 	gArr.shift();
-			 }
-			 if(hArr.length===10){
-				hArr.shift()
-			 }
-			 gArr.push(rqdata.gsr);
-			 hArr.push(rqdata.hrt);
-			 console.log('gsr');
-			 console.log(gArr);
-			 console.log('hrt');
-			 console.log(hArr);
-          }
-        }
-        xhr.open('GET', '/request_data', true);
-        xhr.send(null);
-	}, 1200)
-
-
-    var rqdata = null;
-    function setrq(data1,data2){
-  		data1 = data2;
-  	}
-
-
-
-
-
-
-
-
-    window.onload=function() {
-	  var t_btn = document.getElementById("true_btn");
-	  var f_btn = document.getElementById("false_btn");
-
-	  var biodata = new Object();
-	  var ls_btn = document.getElementById('ls_btn');
-
-	  ls_btn.addEventListener('click', function() {
-		  if(gArr.length === 10){
-		  //로딩화면 시작
- 			LoadingWithMask()
-
-		  //로딩화면 끝
-
-				var form = document.createElement("form");
-			biodata.gsr = gArr;
-			biodata.hrt = hArr;
-			var ls_jsonData = JSON.stringify(biodata);
-			 form.setAttribute("charset", "UTF-8");
-
-			 form.setAttribute("method", "Post");  //Post 방식
-
-			 form.setAttribute("action", "/run"); //요청 보낼 주소
-
-
-
-			 var hiddenField = document.createElement("input");
-
-			 hiddenField.setAttribute("type", "hidden");
-
-			 hiddenField.setAttribute("name", "gsr");
-
-			 hiddenField.setAttribute("value", gArr);
-
-			 form.appendChild(hiddenField);
-
-
-
-			 hiddenField = document.createElement("input");
-
-			 hiddenField.setAttribute("type", "hidden");
-
-			 hiddenField.setAttribute("name", "hrt");
-
-			 hiddenField.setAttribute("value", hArr);
-
-			 form.appendChild(hiddenField);
-
-
-
-			 document.body.appendChild(form);
-
-			 form.submit();
-
-			}else {
-				alert('wait');
-			}
-
-
-
-      	});
-      t_btn.addEventListener('click', function() {
-
-            var box = document.querySelector('.box');
-             var a = rqdata;
-            box.innerHTML = a.gsr;
-
-      });
-      t_btn.addEventListener('click', function() {
-		if(gArr.length===10 && hArr.length===10){
-
-			biodata.gsr = gArr;
-			biodata.hrt = hArr;
-			biodata.label = 't';
-
-			var jsonData = JSON.stringify(biodata);
-			console.log(jsonData);
-			$.ajax({
-					type : "POST",                               //1
-					url : "http://127.0.0.1:5000/savedata",                          //2
-					dataType : 'json',                           //3
-					contentType : 'application/json',            //4
-					data : jsonData,                 //5
-					success : successCall,                       //6
-					error   : errorCall                          //7
-
-			});
-			function successCall(){
-				console.log("전송성공");
-			}
-
-			function errorCall(){
-				console.log("전송실패");
-			}
-
-
-
-
-
-
-
-
-
-
-		}else{
-			alert("잠시 후 다시 시도해주세요");
-		}
-
-      });
-
-      f_btn.addEventListener('click', function() {
-            if(gArr.length===10 && hArr.length===10){
-
-			biodata.gsr = gArr;
-			biodata.hrt = hArr;
-			biodata.label = 'f';
-
-
-			var jsonData = JSON.stringify(biodata);
-			console.log(jsonData);
-			$.ajax({
-					type : "POST",                               //1
-					url : "http://127.0.0.1:5000/savedata",                          //2
-					dataType : 'json',                           //3
-					contentType : 'application/json',            //4
-					data : jsonData,                 //5
-					success : successCall,                       //6
-					error   : errorCall                          //7
-
-			});
-			function successCall(){
-				console.log("전송성공");
-			}
-
-			function errorCall(){
-				console.log("전송실패");
-			}
-
-
-
-
-
-			}else{
-				alert("잠시 후 다시 시도해주세요");
-			}
-      });
-
-    }
-
-
-
-  </script>
-</html>
-
-
-	
-	</code></pre>
-
+							<div class="col-8 col-12-medium">
+															<!-- Text -->
 							</div>
 						</div>
+						<h2 class="w3-panel w3-leftbar w3-border-red">ⅰ. 피부 전기저항 그래프🔌</h2>
+						<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+						<script type="text/javascript">
+							$(function () {
+								$(document).ready(function() {
+									Highcharts.setOptions({
+										global: {
+											useUTC: false
+										}
+									});
+
+									var chart;
+									chart = new Highcharts.Chart({
+										chart: {
+											renderTo: 'container',
+											type: 'spline',
+											marginRight: 10,
+											events: {
+												load: function() {
+
+
+													var series = this.series[0];
+													setInterval(function() {
+														var x = (new Date()).getTime(),
+															y = parseInt(rqdata.gsr);
+														series.addPoint([x, y], true, true);
+													}, 1000);
+												}
+											}
+										},
+										title: {
+											text: '"현재 당신의 피부전기 저항값입니다."'
+										},
+
+										xAxis: {
+											type: 'datetime',
+											tickPixelInterval: 150
+										},
+										yAxis: {
+											title: {
+												text: 'Skin electrical resistance'
+											},
+												max : 600, min : 0,
+										},
+										tooltip: {
+											formatter: function() {
+													return '<b>'+ this.series.name +'</b><br/>'+
+													Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+													Highcharts.numberFormat(this.y, 2);
+											}
+										},
+										legend: {
+											enabled: false
+										},
+										exporting: {
+											enabled: false
+										},
+										series: [{
+											name: '피부전기저항 (GSR)',
+											data: (function() {
+												var data = [],
+													time = (new Date()).getTime(),
+													i;
+
+												for (i = -19; i <= 0; i++) {
+													data.push({
+														x: time + i * 1000,
+														y: 0
+													});
+												}
+
+												return data;
+											})()
+
+										}]
+									});
+								});
+
+							});
+						</script>
+						<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+						<h2 class="w3-panel w3-leftbar w3-border-red">ⅱ. 심박수 그래프💓</h2>
+						<script type="text/javascript">
+							$(function () {
+								$(document).ready(function() {
+									Highcharts.setOptions({
+										global: {
+											useUTC: false
+										}
+									});
+
+									var chart;
+									chart = new Highcharts.Chart({
+										chart: {
+											renderTo: 'container2',
+											type: 'spline',
+											marginRight: 10,
+											events: {
+												load: function() {
+
+
+													var series = this.series[0];
+													setInterval(function() {
+														var x = (new Date()).getTime(),
+															y = parseInt(rqdata.hrt);
+														series.addPoint([x, y], true, true);
+													}, 1000);
+												}
+											}
+										},
+										title: {
+											text: '"현재 당신의 심박수입니다."'
+										},
+										xAxis: {
+											type: 'datetime',
+											tickPixelInterval: 150
+										},
+										yAxis: {
+											title: {
+												text: 'Heart rate'
+											},
+											max : 130, min : 0,
+										},
+										tooltip: {
+											formatter: function() {
+													return '<b>'+ this.series.name +'</b><br/>'+
+													Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) +'<br/>'+
+													Highcharts.numberFormat(this.y, 2);
+											}
+										},
+										legend: {
+											enabled: false
+										},
+										exporting: {
+											enabled: false
+										},
+										series: [{
+											name: '심박수 (HRT)',
+											data: (function() {
+												var data = [],
+													time = (new Date()).getTime(),
+													i;
+
+												for (i = -19; i <= 0; i++) {
+													data.push({
+														x: time + i * 1000,
+														y: 0
+													});
+												}
+												return data;
+											})()
+										}]
+									});
+								});
+
+							});
+						</script>
+						<div id="container2" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+						<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 진단표📋</h2>
+
+						<meta name="viewport" content="width=device-width, initial-scale=1">
+						<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+						<div class="w3-container">
+					  	<table class="w3-table-all">
+							<tr>
+						   		<th>찐 농도</th>
+							  	<th>거짓말 농도</th>
+							 	<th>바로 답하는 순발력</th>
+							  	<th>아두이노 측정값</th>
+							</tr>
+							<tr>
+							  	<td>78%</td>
+							  	<td>87%</td>
+							  	<td>매우빠름</td>
+								<td>75.5</td>
+							</tr>
+					  	</table>
+						</div>
+<p></p>
+<p></p>
+
+						<div class="w3-container w3-center">
+							<a href="/sil" class="button icon fa-industry">데이터 입력</a>&nbsp;&nbsp;
+							<button id="ls_btn" class="button icon fa-download">LSTM 적용</button>
+						</div>
+
+
+						<script>
+
+							function LoadingWithMask() {
+							//화면의 높이와 너비를 구합니다.
+							var maskHeight = $(document).height();
+							var maskWidth  = window.document.body.clientWidth;
+
+							//화면에 출력할 마스크를 설정해줍니다.
+							var mask       ="<div id='mask' style='position:absolute; z-index:9000; background-color:#ffffff; display:none; left:0; top:0;'></div>";
+							var loadingImg ='';
+
+
+							loadingImg +="<div id='loadingImg' style = 'position:absolute;  z-index:9500; display:none; left:50%; top:50%; '>";
+							loadingImg +=" <img src='{{ url_for('static', filename='images/road.gif') }}' style='position: fixed; display: block; transform:translate(-50%, -50%); '/>";
+							loadingImg +="</div>";
+
+
+
+							//화면에 레이어 추가
+							$('body')
+								.append(loadingImg)
+								.append(mask)
+
+
+							//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채웁니다.
+							$('#mask').css({
+									'width' : maskWidth
+									,'height': maskHeight
+									,'opacity' :'0.75'
+							});
+							//마스크 표시
+							$('#mask').show();
+
+							//로딩중 이미지 표시
+							$('#loadingImg').show();
+							}
+						</script>
+						<script>
+							var gArr = new Array();
+							var hArr = new Array();
+
+							setInterval(function(){
+								var btn = document.querySelector('button');
+
+								var xhr = new XMLHttpRequest();
+
+								xhr.onreadystatechange = function() {
+								  if(xhr.readyState === 4 && xhr.status === 200) {
+									 rqdata = JSON.parse(xhr.responseText);
+									 //console.log('gsr = ' + parseInt(rqdata.gsr));
+									 //console.log('hrt = ' + parseInt(rqdata.hrt));
+									 setrq(rqdata,JSON.parse(xhr.responseText))
+									 if(gArr.length === 10){
+										gArr.shift();
+									 }
+									 if(hArr.length===10){
+										hArr.shift()
+									 }
+									 gArr.push(rqdata.gsr);
+									 hArr.push(rqdata.hrt);
+									 console.log('gsr');
+									 console.log(gArr);
+									 console.log('hrt');
+									 console.log(hArr);
+								  }
+								}
+								xhr.open('GET', '/request_data', true);
+								xhr.send(null);
+							}, 1200)
+
+
+							var rqdata = null;
+							function setrq(data1,data2){
+								data1 = data2;
+							}
+
+
+							window.onload=function() {
+							  var t_btn = document.getElementById("true_btn");
+							  var f_btn = document.getElementById("false_btn");
+
+							  var biodata = new Object();
+							  var ls_btn = document.getElementById('ls_btn');
+
+							  ls_btn.addEventListener('click', function() {
+								  if(gArr.length === 10){
+								  //로딩화면 시작
+									LoadingWithMask()
+
+								  //로딩화면 끝
+
+										var form = document.createElement("form");
+									biodata.gsr = gArr;
+									biodata.hrt = hArr;
+									var ls_jsonData = JSON.stringify(biodata);
+									 form.setAttribute("charset", "UTF-8");
+
+									 form.setAttribute("method", "Post");  //Post 방식
+
+									 form.setAttribute("action", "/run"); //요청 보낼 주소
+
+
+
+									 var hiddenField = document.createElement("input");
+
+									 hiddenField.setAttribute("type", "hidden");
+
+									 hiddenField.setAttribute("name", "gsr");
+
+									 hiddenField.setAttribute("value", gArr);
+
+									 form.appendChild(hiddenField);
+
+
+
+									 hiddenField = document.createElement("input");
+
+									 hiddenField.setAttribute("type", "hidden");
+
+									 hiddenField.setAttribute("name", "hrt");
+
+									 hiddenField.setAttribute("value", hArr);
+
+									 form.appendChild(hiddenField);
+
+
+
+									 document.body.appendChild(form);
+
+									 form.submit();
+
+									}else {
+										alert('wait');
+									}
+
+
+
+								});
+							  t_btn.addEventListener('click', function() {
+
+									var box = document.querySelector('.box');
+									 var a = rqdata;
+									box.innerHTML = a.gsr;
+
+							  });
+							  t_btn.addEventListener('click', function() {
+								if(gArr.length===10 && hArr.length===10){
+
+									biodata.gsr = gArr;
+									biodata.hrt = hArr;
+									biodata.label = 't';
+
+									var jsonData = JSON.stringify(biodata);
+									console.log(jsonData);
+									$.ajax({
+											type : "POST",                               //1
+											url : "http://127.0.0.1:5000/savedata",                          //2
+											dataType : 'json',                           //3
+											contentType : 'application/json',            //4
+											data : jsonData,                 //5
+											success : successCall,                       //6
+											error   : errorCall                          //7
+
+									});
+									function successCall(){
+										console.log("전송성공");
+									}
+
+									function errorCall(){
+										console.log("전송실패");
+									}
+
+
+
+
+
+
+
+
+
+
+								}else{
+									alert("잠시 후 다시 시도해주세요");
+								}
+
+							  });
+
+							  f_btn.addEventListener('click', function() {
+									if(gArr.length===10 && hArr.length===10){
+
+									biodata.gsr = gArr;
+									biodata.hrt = hArr;
+									biodata.label = 'f';
+
+
+									var jsonData = JSON.stringify(biodata);
+									console.log(jsonData);
+									$.ajax({
+											type : "POST",                               //1
+											url : "http://127.0.0.1:5000/savedata",                          //2
+											dataType : 'json',                           //3
+											contentType : 'application/json',            //4
+											data : jsonData,                 //5
+											success : successCall,                       //6
+											error   : errorCall                          //7
+
+									});
+									function successCall(){
+										console.log("전송성공");
+									}
+
+									function errorCall(){
+										console.log("전송실패");
+									}
+
+
+
+
+
+									}else{
+										alert("잠시 후 다시 시도해주세요");
+									}
+							  });
+
+							}
+					  </script>
 					</div>
 				</div>
-			</section>
 
+			</section>
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
@@ -510,11 +465,9 @@ $(function () {
 							<h3>스마트 거짓말 탐지기 (SMART LIE DETECTOR)</h3>
 							<p>선문대학교 컴퓨터공학부 4학년 졸업작품 "규건재상팀"</p>
 						</section>
-						
 						<section>
 							<h4>깃 허브</h4>
 							<ul class="plain">
-								
 								<li><a href="https://github.com/2010psw/LieDetector"><i class="icon fa-github">&nbsp;</i>Github</a></li>
 							</ul>
 						</section>
@@ -524,17 +477,13 @@ $(function () {
 					</div>
 				</div>
 			</footer>
-
 		<!-- Scripts -->
-
-    <script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
-	<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
-<script src="{{ url_for('static',filename='assets/js/exporting.js') }}"></script>
-<script src="{{ url_for('static',filename='assets/js/highcharts.js') }}"></script>
-
-
+			<script src="{{ url_for('static',filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static',filename='assets/js/browser.min.js') }}"></script>
+			<script src="{{ url_for('static',filename='assets/js/breakpoints.min.js') }}"></script>
+			<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
+			<script src="{{ url_for('static',filename='assets/js/exporting.js') }}"></script>
+			<script src="{{ url_for('static',filename='assets/js/highcharts.js') }}"></script>
 	</body>
 </html>
