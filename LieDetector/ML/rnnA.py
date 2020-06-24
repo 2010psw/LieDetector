@@ -11,9 +11,6 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 import numpy as np
 
 import json
-import pickle
-import h5py
-
 
 import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -31,10 +28,6 @@ def train(new_list):
     ####################################################################
     x_train = []
     y_train = []
-    x_test = []
-
-
-
 
     for i in id_list :
         list = []
@@ -48,8 +41,7 @@ def train(new_list):
             list.append(str(j))
         lb_list.append(conn.select_lb(i))
         x_train.append(list)
-    # for i in x_train:
-    #     print(i)
+
     x_train.append(new_list)
     tokenizer.fit_on_texts(x_train)
     x_train.remove(new_list)
@@ -72,25 +64,6 @@ def train(new_list):
     print('y_tr')
     print(y_train)
 
-    # print('x_train')
-    # print(type(x_train))   >>>    list
-    # print(x_train)
-    # [
-    #     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    #         '''   [a0, , , a9, b0, , , b9] -> lb[t or f]'''
-    #     [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-    #     [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
-    #     [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
-    #     [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
-    # ]
-    #
-    # print('y_train')
-    # print(type(y_train))  >>>    list
-    # print(y_train)
-    #
-    # [1, 1, 0, 1, 0]
-
-
 
     try:
         model = Sequential()
@@ -98,12 +71,10 @@ def train(new_list):
         model.add(LSTM(200))
         model.add(Dense(1, activation='sigmoid'))
 
-
+        #데이터가 더 많아질 경우 변경가능
         # es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=4)
         # save_weights_only = 'true'
         # mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_best_only=True)
-        ###################경로#############################
-        ###############################################
 
         mc = ModelCheckpoint('best_model.h5', monitor='val_acc', mode='max', verbose=1, save_weights_only='true', period=3)
         model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
@@ -127,17 +98,11 @@ def train(new_list):
         loaded_model.load_weights('best_model.h5')
         loaded_model.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['acc'])
 
-
         new_np = np.array(new_list)
-        print('shape=============')
-        print(new_np.shape)
 
         tokenizer.fit_on_texts(new_list)
 
 
-
-
-        print(123)
         asdf = tokenizer.texts_to_sequences(new_list)
         sequences = tokenizer.texts_to_sequences(new_list)
         x_test = pad_sequences(sequences, maxlen=21)

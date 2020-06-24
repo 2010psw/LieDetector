@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-import random
 import json
 import hashlib
 from datetime import datetime
@@ -23,6 +22,7 @@ list_data_1 = []
 @app.route('/')
 def index_page():
     return render_template('index.html')
+
 @app.route('/main')
 def main_page():
     return render_template('main.html')
@@ -59,7 +59,6 @@ def sil_page():
 @app.route('/result')
 def run_page():
     result_data = pred.pred(list_data_1)
-    print('===main====')
     print(result_data)
     infodata = list_data_1
     dic = {}
@@ -67,9 +66,7 @@ def run_page():
     dic['result'] = result_data
     sum = 0
     for i in range(21):
-        # print(type(dic['result'][i][0]))
         sum = sum + dic['result'][i][0]
-    print('tetsetsetsetset')
     print(sum/21*100)
     dic['avg'] = (sum/21*100)
     dic['true'] = str(sum/21*100)[0:5]
@@ -91,14 +88,11 @@ def save_data():
     now = datetime.now()
     nowtime = str("%s_%s_%s_%s_%s_%s_%s" % (now.year, now.month, now.day, now.hour, now.minute, now.second,now.microsecond))
     encoded_data = nowtime.encode()
-    before = hashlib.sha256(encoded_data).hexdigest()
-    # if len(before) > 65 :
-    #     id = before[0:65]
-    # else :
-    #     id = before
-    id = nowtime
 
-    # print(before)
+    #sha(id), 구분이안되서 사용 중단
+    #before = hashlib.sha256(encoded_data).hexdigest()
+
+    id = nowtime
     print(id)
 
     b_data = request.json
@@ -110,27 +104,13 @@ def save_data():
     if b_data['label'] == 'f':
         conn.ins_lb(id, 0)
 
-
-
-    #print(type(b_data['gsr']))
-
-
-
-
-
-
-    return 'good';
+    return 'good'
 
 
 
 #############################
 
-
-
-
-
-
-
+# 아두이노 멀티스레드
 def thread1():
     ser = serial.Serial(
         port='COM2',

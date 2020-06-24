@@ -1,4 +1,3 @@
-
 host='localhost'
 user='admin'
 password='admin'

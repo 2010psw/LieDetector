@@ -1,6 +1,5 @@
 import pymysql
 from DB import dbinfo
-import random
 
 
 host=dbinfo.host
@@ -8,7 +7,6 @@ user=dbinfo.user
 password=dbinfo.password
 db=dbinfo.db
 charset=dbinfo.charset
-
 
 ################연결객체정보################################
 def conn():
@@ -38,6 +36,7 @@ def select_id():
         con.close()
         return return_str
 ######################################################
+# 테스트코드
 # test = select_id()
 # print('select_id() 정보')
 # print(type(test))
@@ -65,6 +64,7 @@ def select_gsr(id):
         con.close()
         return list
 ################################################################
+# 테스트코드
 # id = 'aaaa'
 # list = select_gsr(id)
 # print(list)
@@ -171,22 +171,3 @@ def ins_lb(id, lb_data):
     finally:
         con.close()
 ###############################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
