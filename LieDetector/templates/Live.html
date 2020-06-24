@@ -9,6 +9,7 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
 		<link rel="shortcut icon" href="{{ url_for('static', filename='images/거짓말 탐지기.ico') }}">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	</head>
 	<body class="is-preload">
 
@@ -25,6 +26,7 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="/">시작화면🚩</a></li>
+					<li><a href="/sil">데이터 집어넣기⌨</a></li>
 					<li><a href="/about">대하여..💬</a></li>
 				</ul>
 			</nav>
@@ -218,37 +220,12 @@ $(function () {
 
 
 
-			<h2 class="w3-panel w3-leftbar w3-border-red">ⅲ. 진단표📋</h2>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
-
-<div class="w3-container">
-
-
-
-  <table class="w3-table-all">
-    <tr>
-
-   <th>찐 농도</th>
-      <th>거짓말 농도</th>
-      <th>바로 답하는 순발력</th>
-      <th>아두이노 측정값</th>
-    </tr>
-    <tr>
-      <td>78%</td>
-      <td>87%</td>
-      <td>매우빠름</td>
-<td>75.5</td>
-  </table>
-</div>
 <p></p>
 
 <p></p>
 <div class="w3-container w3-center">
-<a href="/sil" class="button icon fa-industry">데이터 입력</a>&nbsp;&nbsp;
-<button id="ls_btn" class="button icon fa-download">LSTM 적용</button>
+<button id="ls_btn" class="button icon fa-download">저장 및 결과값 보기</button>
 				</div>
 </body>
 </html>
@@ -393,7 +370,7 @@ $(function () {
 			 form.submit();
 
 			}else {
-				alert('wait');
+				alert('잠시 후 다시시도 해주세요! 데이터를 뽑는 중입니다..🏭');
 			}
 
 
