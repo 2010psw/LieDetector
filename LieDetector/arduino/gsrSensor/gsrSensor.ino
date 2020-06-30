@@ -3,7 +3,7 @@
 
 HeartSpeed heartspeed(A1);
 
-const int BUZZER=3;
+const int BUZZER=3; //버저를 지우면 소스는 돌아가나 내부 웹에서 그래프 수치값이 
 const int GSR=A2;
 int threshold=0;
 int gsr;
